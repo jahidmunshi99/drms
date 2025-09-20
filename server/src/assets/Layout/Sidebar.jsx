@@ -2,6 +2,7 @@ import { FaFlask, FaHome, FaSearch, FaUserCog, FaUsers } from "react-icons/fa";
 import { FaDiagramProject } from "react-icons/fa6";
 import { IoMdLogOut, IoMdSettings } from "react-icons/io";
 import { MdAgriculture, MdAutoGraph } from "react-icons/md";
+import { NavLink } from "react-router";
 
 export const Sidebar = () => {
   return (
@@ -25,10 +26,10 @@ export const Sidebar = () => {
       <nav className="flex-1">
         <ul className="space-y-1 py-4">
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2 bg-[#ff0042]">
-            <a href="#" className="flex items-center">
+            <NavLink to="/" className="flex items-center">
               <FaHome />
               <span className="ml-2">Dashboard</span>
-            </a>
+            </NavLink>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
             <a href="#" className="flex items-center">
