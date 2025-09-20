@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router";
 import ErrorPage from "../Pages/404/ErrorPage";
 import AgriDamage from "../Pages/AgriDamage/AgriDamage";
 import AgriFieldDemos from "../Pages/AgriFieldDemos/AgriFieldDemos";
+import InsentiveAndRehabilitation from "../Pages/AgriInsentiveAndRehab/InsentiveAndRehabilitation";
+import AgriMeshinaries from "../Pages/AgriMeshinaries/AgriMeshinaries";
+import AgriProduction from "../Pages/AgriProduction/AgriProduction";
 import FarmersGroup from "../Pages/FarmersGroup/FarmersGroup";
 import FertilizerAndPesticide from "../Pages/FertilizerAndPesticide/FertilizerAndPesticide";
 import Home from "../Pages/Home/Home";
@@ -15,10 +18,13 @@ const AppRoute = () => {
       <Route path="/" element={<Home />} />
       <Route path="/weather" element={<Weather />} />
       <Route path="/overview" element={<Overview />} />
-      <Route path="/production" element={<Overview />} />
-      <Route path="/mashinaries" element={<Overview />} />
+      <Route path="/production" element={<AgriProduction />} />
+      <Route path="/mashinaries" element={<AgriMeshinaries />} />
       <Route path="/agridemo" element={<AgriFieldDemos />} />
-      <Route path="/intensive&rehabitation" element={<Overview />} />
+      <Route
+        path="/intensive&rehabitation"
+        element={<InsentiveAndRehabilitation />}
+      />
       <Route path="/projects" element={<Overview />} />
       <Route
         path="/fertilizer&pestiside"

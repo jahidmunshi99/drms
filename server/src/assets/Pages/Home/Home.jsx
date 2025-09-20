@@ -20,27 +20,27 @@ const Home = () => {
       <Card
         menu_title={"আবাদ ও উৎপাদন"}
         bg_color={"bg-gradient-to-r from-fuchsia-700 to-fuchsia-900"}
-        to_url={"overview"}
+        to_url={"production"}
       />
 
       {/* <!-- Card 4 --> */}
       <Card
         menu_title={"কৃষি যন্ত্রপাতি"}
         bg_color={"bg-gradient-to-r from-indigo-500 to-purple-700"}
-        to_url={"overview"}
+        to_url={"mashinaries"}
       />
       {/* <!-- Card 5 --> */}
       <Card
         menu_title={"প্রদর্শনী"}
         bg_color={"bg-gradient-to-r from-cyan-500 to-blue-500"}
-        to_url={"overview"}
+        to_url={"agridemo"}
       />
 
       {/* <!-- Card 6 --> */}
       <Card
         menu_title={"প্রণোদনা ও পুনর্বাসন"}
         bg_color={"bg-gradient-to-r from-indigo-500 to-indigo-700"}
-        to_url={"overview"}
+        to_url={"intensive&rehabitation"}
       />
 
       {/* <!-- Card 7 --> */}
