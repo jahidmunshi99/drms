@@ -1,7 +1,7 @@
 // import AgriProduction from "../Pages/AgriProduction/AgriProduction";
 // import AgriProjects from "../Pages/AgriProjects/AgriProjects";
 // import FarmersGroup from "../Pages/FarmersGroup/FarmersGroup";
-import InsentiveAndRehabilitation from "../Pages/AgriInsentiveAndRehab/InsentiveAndRehabilitation";
+// import InsentiveAndRehabilitation from "../Pages/AgriInsentiveAndRehab/InsentiveAndRehabilitation";
 // import Home from "../Pages/Home/Home";
 // import Stuffs from "../Pages/Stuffs/Stuffs";
 // import AgriMeshinaries from "../Pages/AgriMeshinaries/AgriMeshinaries";
@@ -29,7 +29,7 @@ const Contents = () => {
       {/* <FarmersGroup /> */}
       {/* <Trainings /> */}
       {/* <AgriDamage /> */}
-      <InsentiveAndRehabilitation />
+      {/* <InsentiveAndRehabilitation /> */}
     </main>
   );
 };

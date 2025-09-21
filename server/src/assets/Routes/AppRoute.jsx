@@ -4,7 +4,8 @@ import AgriDamage from "../Pages/AgriDamage/AgriDamage";
 import AgriFieldDemos from "../Pages/AgriFieldDemos/AgriFieldDemos";
 import InsentiveAndRehabilitation from "../Pages/AgriInsentiveAndRehab/InsentiveAndRehabilitation";
 import AgriMeshinaries from "../Pages/AgriMeshinaries/AgriMeshinaries";
-import AgriProduction from "../Pages/AgriProduction/AgriProduction";
+import AgriProjects from "../Pages/AgriProjects/AgriProjects";
+import AgroProduction from "../Pages/AgroProduction/AgroProduction";
 import FarmersGroup from "../Pages/FarmersGroup/FarmersGroup";
 import FertilizerAndPesticide from "../Pages/FertilizerAndPesticide/FertilizerAndPesticide";
 import Home from "../Pages/Home/Home";
@@ -18,14 +19,14 @@ const AppRoute = () => {
       <Route path="/" element={<Home />} />
       <Route path="/weather" element={<Weather />} />
       <Route path="/overview" element={<Overview />} />
-      <Route path="/production" element={<AgriProduction />} />
+      <Route path="/production" element={<AgroProduction />} />
       <Route path="/mashinaries" element={<AgriMeshinaries />} />
       <Route path="/agridemo" element={<AgriFieldDemos />} />
       <Route
         path="/intensive&rehabitation"
         element={<InsentiveAndRehabilitation />}
       />
-      <Route path="/projects" element={<Overview />} />
+      <Route path="/projects" element={<AgriProjects />} />
       <Route
         path="/fertilizer&pestiside"
         element={<FertilizerAndPesticide />}

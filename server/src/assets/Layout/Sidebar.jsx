@@ -1,7 +1,12 @@
 import { FaFlask, FaHome, FaSearch, FaUserCog, FaUsers } from "react-icons/fa";
 import { FaDiagramProject } from "react-icons/fa6";
 import { IoMdLogOut, IoMdSettings } from "react-icons/io";
-import { MdAgriculture, MdAutoGraph } from "react-icons/md";
+import {
+  MdAgriculture,
+  MdAutoGraph,
+  MdDashboardCustomize,
+} from "react-icons/md";
+
 import { NavLink } from "react-router";
 
 export const Sidebar = () => {
@@ -38,22 +43,28 @@ export const Sidebar = () => {
             </a>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
-            <a href="#" className="flex items-center">
+            <NavLink to="/overview" className="flex items-center">
+              <MdDashboardCustomize />
+              <span className="ml-2">Overview</span>
+            </NavLink>
+          </li>
+          <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
+            <NavLink to="/projects" className="flex items-center">
               <FaDiagramProject />
               <span className="ml-2">Projects</span>
-            </a>
+            </NavLink>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
-            <a href="#" className="flex items-center">
+            <NavLink to="/mashinaries" className="flex items-center">
               <MdAgriculture className="text-xl" />
               <span className="ml-3">Agricultural Machinery</span>
-            </a>
+            </NavLink>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
-            <a href="#" className="flex items-center">
+            <NavLink to="fertilizer&pestiside" className="flex items-center">
               <FaFlask />
               <span className="ml-2">Fertilizer & Pesticide</span>
-            </a>
+            </NavLink>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
             <a href="#" className="flex items-center">
@@ -62,10 +73,10 @@ export const Sidebar = () => {
             </a>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
-            <a href="#" className="flex items-center">
+            <NavLink to="/officestuffs" className="flex items-center">
               <FaUsers className="text-xl" />
               <span className="ml-2">Staffs</span>
-            </a>
+            </NavLink>
           </li>
           <li className="hover:bg-[#ff0042] transition hover:text-bold px-4 py-2">
             <a href="#" className="flex items-center">

@@ -47,7 +47,7 @@ const Home = () => {
       <Card
         menu_title={"প্রকল্পসমূহ"}
         bg_color={"bg-gradient-to-r from-orange-500 to-orange-600"}
-        to_url={"overview"}
+        to_url={"projects"}
       />
 
       {/* <!-- Card 8 --> */}
