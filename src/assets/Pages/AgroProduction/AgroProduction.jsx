@@ -58,7 +58,7 @@ const AgroProduction = () => {
         </h3>
         <div className="mx-auto mt-4 overflow-hidden">
           {/* <!-- Header Row --> */}
-          <div className="grid grid-cols-2 gap-5 font-semibold">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
             {/* <!-- Left Column --> */}
             <div className="border border-gray-200 shadow-sm">
               <div className="bg-gray-100 py-2 px-4">বীজতলা</div>
@@ -150,7 +150,7 @@ const AgroProduction = () => {
         </h3>
         <div className="mx-auto mt-4 overflow-hidden">
           {/* <!-- Header Row --> */}
-          <div className="grid grid-cols-2 gap-5 font-semibold">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
             {/* <!-- Left Column --> */}
             <div className="border border-gray-200 shadow-sm">
               <div className="bg-gray-100 py-2 px-4">কর্তন</div>
@@ -258,7 +258,7 @@ const AgroProduction = () => {
       </section>
       {/* Close the flex container */}
 
-      <div className="bg-white shadow-md rounded-lg px-6 py-4">
+      <section className="bg-white shadow-md rounded-lg px-6 py-4">
         <div className="flex justify-between items-center mb-4 flex-wrap">
           <div className="flex items-center space-x-3 text-sm mb-3 md:mb-0">
             <span>অর্থবছর</span>
@@ -539,7 +539,7 @@ const AgroProduction = () => {
             </button>
           </div>
         </div>
-      </div>
+      </section>
       {/* <!-- Content Section --> */}
       <section className="mt-5 mb-1 bg-white px-5 py-3 rounded-lg shadow-sm">
         <div className="flex items-center justify-between">
