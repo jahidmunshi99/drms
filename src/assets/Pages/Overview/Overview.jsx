@@ -32,7 +32,7 @@ const Overview = () => {
       </section>
       {/* <!-- Content Section --> */}
 
-      <section className="grid grid-cols-2 sm:grid-col-1 gap-5">
+      <section className="grid grid-cols-2 sm:grid-cols-1 gap-5">
         <div className="mt-4 bg-white p-5 rounded-lg shadow-sm border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
             জেলার তথ্য
