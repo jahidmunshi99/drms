@@ -1,12 +1,11 @@
-import { FaEye } from "react-icons/fa";
-import { FaPenToSquare } from "react-icons/fa6";
-import { IoPrintOutline } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
+import Topbar from "../../components/Topbar";
+import Icon from "../../utils/Icons_ulits";
 const Overview = () => {
   return (
     <div>
       {/* Top Header */}
-      <section className="bg-white px-4 py-2 rounded-lg shadow-sm mb-4">
+      <Topbar />
+      {/* <section className="bg-white px-4 py-2 rounded-lg shadow-sm mb-4">
         <div className="flex items-center justify-between">
           <div className="text-sm text-slate-600">
             <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
@@ -24,11 +23,11 @@ const Overview = () => {
               Export CSV
             </button>
             <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-50 cursor-pointer">
-              <IoPrintOutline className="text-xl" />
+              <Icon.print className="text-xl" />
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
@@ -177,7 +176,7 @@ const Overview = () => {
                 Export CSV
               </button>
               <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                <IoPrintOutline className="text-xl" />
+                <Icon.print className="text-xl" />
               </button>
             </div>
           </div>
@@ -283,19 +282,19 @@ const Overview = () => {
                     href="#"
                     className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
                   >
-                    <FaEye className="text-[16px]" />
+                    <Icon.view className="text-[16px]" />
                   </a>
                   <a
                     href="#"
                     className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
                   >
-                    <FaPenToSquare className="text-[15px]" />
+                    <Icon.edit className="text-[15px]" />
                   </a>
                   <a
                     href="#"
                     className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
                   >
-                    <MdDelete className="text-[18px]" />
+                    <Icon.delete className="text-[18px]" />
                   </a>
                 </td>
               </tr>
