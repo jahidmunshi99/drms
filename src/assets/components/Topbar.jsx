@@ -1,20 +1,72 @@
-import { getData } from "../FetchData/FetchData";
+import { useState } from "react";
+import useFetchDistrict from "../FetchData/useFetchDistrict";
+import useFetchDivision from "../FetchData/useFetchDivision";
+import useFetchSession from "../FetchData/useFetchSession";
+import useFetchUpozila from "../FetchData/useFetchUpozila";
 import Icon from "../utils/Icons_ulits";
 
 const Topbar = () => {
-  console.log(getData);
+  const [selectedDivision, setSelectedDivision] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedUpozila, setSelectedUpozila] = useState("");
+  const [selectedSession, setSelectedSession] = useState("");
+
+  const { divisions } = useFetchDivision();
+  const { districts } = useFetchDistrict(selectedDivision);
+  const { upozila } = useFetchUpozila(selectedDistrict);
+  const { session } = useFetchSession();
+
+  console.log(session);
+
   return (
     <section className="bg-white px-4 py-2 rounded-lg shadow-sm mb-4">
       <div className="flex items-center justify-between">
         <div className="text-sm text-slate-600">
-          <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
-            <option value="">উপজেলা নির্বাচন করুন</option>
-            <option value="">পটুয়াখালী সদর</option>
-            <option value="">বাউফল</option>
-            <option value="">গলাচিপা</option>
-            <option value="">কলাপাড়া</option>
-            <option value="">দশমিনা</option>
-            <option value="">মির্জাগঞ্জ</option>
+          <select
+            className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded"
+            onChange={(e) => setSelectedDivision(e.target.value)}
+          >
+            <option value="">বিভাগ</option>
+            {divisions.map((item, index) => (
+              <option key={index} value={item.name}>
+                {item.name_bn}
+              </option>
+            ))}
+          </select>
+          {selectedDivision && (
+            <select
+              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded mx-3"
+              onChange={(e) => setSelectedDistrict(e.target.value)}
+            >
+              <option value="">জেলা</option>
+              {districts.map((item, index) => (
+                <option key={index} value={item.name}>
+                  {item.name_bn}
+                </option>
+              ))}
+            </select>
+          )}
+
+          {selectedDistrict && (
+            <select
+              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded"
+              onChange={(e) => setSelectedUpozila(e.target.value)}
+            >
+              <option value="">উপজেলা</option>
+              {upozila.map((item, index) => (
+                <option key={index} value={item.name}>
+                  {item.name_bn}
+                </option>
+              ))}
+            </select>
+          )}
+          <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 mx-2 rounded">
+            <option value="">মৌসুম</option>
+            {session.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
         <div className="flex items-center gap-2">

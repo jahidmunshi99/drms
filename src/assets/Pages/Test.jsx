@@ -1,4 +1,7 @@
-export const text = () => {
+import { allData } from "../data/data";
+
+export const Test = () => {
+  console.log(allData);
   return (
     <div>
       <div className="bg-white shadow-md rounded-lg p-6">
