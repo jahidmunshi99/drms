@@ -1,12 +1,52 @@
+import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoPrintOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
+import EditFormModal from "./EditFormModal";
+import ViewForm from "./ViewForm";
+
 const AgroProduction = () => {
+  const [show, setShow] = useState(true);
+  const data = {
+    id: "001",
+    f_year: "2025-26",
+    crop_session: "robi",
+    upazilaId: "Savar",
+    crop_name: "Wheat",
+    category: "seedbed",
+    target: 1500,
+    varieties: [
+      {
+        name: "BARI Gom-26",
+        achievement: 500,
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 300,
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 300,
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 300,
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 300,
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 300,
+      },
+    ],
+  };
   return (
     <>
-
-    <div>
+      {show && <EditFormModal />}
+      {show && <ViewForm item={data} onClose={() => setShow(false)} />}
       {/* Top Header */}
       <section className="bg-white px-4 py-2 mb-4 rounded-lg shadow-sm">
         <div className="flex items-center justify-between">
@@ -53,863 +93,10 @@ const AgroProduction = () => {
         </div>
       </section>
 
-      {/* <!-- Content Section --> */}
-      <section className="mt-1 bg-white p-5 shadow-sm">
-        <h3 className="font-semibold border-b border-gray-300">
-          একনজরে ফসলের আবাদ (হেক্টরে)
-        </h3>
-        <div className="mx-auto mt-4 overflow-hidden">
-          {/* <!-- Header Row --> */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
-            {/* <!-- Left Column --> */}
-            <div className="border border-gray-200 shadow-sm">
-              <div className="bg-gray-100 py-2 px-4">বীজতলা</div>
-              <div className=" overflow-hidden">
-                {/* <!-- Table Header --> */}
-                <div className="grid grid-cols-[60%_20%_20%] bg-gray-50 border-b border-gray-200 font-semibold text-sm">
-                  <div className="py-2 px-4">জাত</div>
-                  <div className="py-2 px-4 text-center">লক্ষ্যমাত্রা</div>
-                  <div className="py-2 px-4 text-center">অর্জন</div>
-                </div>
-
-                {/* <!-- Row 1 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">হাইব্রিড</div>
-                  <div className="py-2 px-4 text-center">১০০</div>
-                  <div className="py-2 px-4 text-center">৮০</div>
-                </div>
-
-                {/* <!-- Row 2 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">উফশী</div>
-                  <div className="py-2 px-4 text-center">৫০০</div>
-                  <div className="py-2 px-4 text-center">৪২০</div>
-                </div>
-
-                {/* <!-- Row 3 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4">স্থানীয়</div>
-                  <div className="py-2 px-4 text-center">১৫০০</div>
-                  <div className="py-2 px-4 text-center">১২০০</div>
-                </div>
-
-                {/* <!-- Row 4 (Total) --> */}
-                <div className="grid grid-cols-[60%_20%_20%] font-family text-sm">
-                  <div className="py-2 px-4">মোট</div>
-                  <div className="py-2 px-4 text-center">৩০০০</div>
-                  <div className="py-2 px-4 text-center">২৫০০</div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- Right Column --> */}
-            <div className="border border-gray-200 shadow-sm">
-              <div className="bg-gray-100 py-2 px-4">চুড়ান্ত আবাদ</div>
-              <div className="overflow-hidden">
-                {/* <!-- Table Header --> */}
-                <div className="grid grid-cols-[60%_20%_20%] bg-gray-50 border-b border-gray-200 font-semibold text-sm">
-                  <div className="py-2 px-4">জাত</div>
-                  <div className="py-2 px-4 text-center">লক্ষ্যমাত্রা</div>
-                  <div className="py-2 px-4 text-center">অর্জন</div>
-                </div>
-
-                {/* <!-- Row 1 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">হাইব্রিড</div>
-                  <div className="py-2 px-4 text-center">১০০</div>
-                  <div className="py-2 px-4 text-center">৮০</div>
-                </div>
-
-                {/* <!-- Row 2 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">উফশী</div>
-                  <div className="py-2 px-4 text-center">৫০০</div>
-                  <div className="py-2 px-4 text-center">৪২০</div>
-                </div>
-
-                {/* <!-- Row 3 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4">স্থানীয়</div>
-                  <div className="py-2 px-4 text-center">১৫০০</div>
-                  <div className="py-2 px-4 text-center">১২০০</div>
-                </div>
-
-                {/* <!-- Row 4 (Total) --> */}
-                <div className="grid grid-cols-[60%_20%_20%] font-family text-sm">
-                  <div className="py-2 px-4">মোট</div>
-                  <div className="py-2 px-4 text-center">৩০০০</div>
-                  <div className="py-2 px-4 text-center">২৫০০</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* <!-- Content Section --> */}
-      <section className="mt-5 bg-white p-5 rounded-lg shadow-sm">
-        <h3 className="font-semibold mb-4 border-b border-gray-300">
-          কর্তন ও উৎপাদন
-        </h3>
-        <div className="mx-auto mt-4 overflow-hidden">
-          {/* <!-- Header Row --> */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
-            {/* <!-- Left Column --> */}
-            <div className="border border-gray-200 shadow-sm">
-              <div className="bg-gray-100 py-2 px-4">কর্তন</div>
-              <div className=" overflow-hidden">
-                {/* <!-- Table Header --> */}
-                <div className="grid grid-cols-[60%_20%_20%] bg-gray-50 border-b border-gray-200 font-semibold text-sm">
-                  <div className="py-2 px-4">জাত</div>
-                  <div className="py-2 px-4 text-center">লক্ষ্যমাত্রা</div>
-                  <div className="py-2 px-4 text-center">অর্জন</div>
-                </div>
-
-                {/* <!-- Row 1 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">হাইব্রিড</div>
-                  <div className="py-2 px-4 text-center">১০০</div>
-                  <div className="py-2 px-4 text-center">৮০</div>
-                </div>
-
-                {/* <!-- Row 2 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">উফশী</div>
-                  <div className="py-2 px-4 text-center">৫০০</div>
-                  <div className="py-2 px-4 text-center">৪২০</div>
-                </div>
-
-                {/* <!-- Row 3 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4">স্থানীয়</div>
-                  <div className="py-2 px-4 text-center">১৫০০</div>
-                  <div className="py-2 px-4 text-center">১২০০</div>
-                </div>
-
-                {/* <!-- Row 4 (Total) --> */}
-                <div className="grid grid-cols-[60%_20%_20%] font-family text-sm">
-                  <div className="py-2 px-4">মোট</div>
-                  <div className="py-2 px-4 text-center">৩০০০</div>
-                  <div className="py-2 px-4 text-center">২৫০০</div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- Right Column --> */}
-            <div className="border border-gray-200 shadow-sm">
-              <div className="bg-gray-100 py-2 px-4">উৎপাদন</div>
-              <div className="overflow-hidden">
-                {/* <!-- Table Header --> */}
-                <div className="grid grid-cols-[60%_20%_20%] bg-gray-50 border-b border-gray-200 font-semibold text-sm">
-                  <div className="py-2 px-4">জাত</div>
-                  <div className="py-2 px-4 text-center">লক্ষ্যমাত্রা</div>
-                  <div className="py-2 px-4 text-center">অর্জন</div>
-                </div>
-
-                {/* <!-- Row 1 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">হাইব্রিড</div>
-                  <div className="py-2 px-4 text-center">১০০</div>
-                  <div className="py-2 px-4 text-center">৮০</div>
-                </div>
-
-                {/* <!-- Row 2 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4 text-slate-700">উফশী</div>
-                  <div className="py-2 px-4 text-center">৫০০</div>
-                  <div className="py-2 px-4 text-center">৪২০</div>
-                </div>
-
-                {/* <!-- Row 3 --> */}
-                <div className="grid grid-cols-[60%_20%_20%] border-b border-gray-200 text-sm">
-                  <div className="py-2 px-4">স্থানীয়</div>
-                  <div className="py-2 px-4 text-center">১৫০০</div>
-                  <div className="py-2 px-4 text-center">১২০০</div>
-                </div>
-
-                {/* <!-- Row 4 (Total) --> */}
-                <div className="grid grid-cols-[60%_20%_20%] font-family text-sm">
-                  <div className="py-2 px-4">মোট</div>
-                  <div className="py-2 px-4 text-center">৩০০০</div>
-                  <div className="py-2 px-4 text-center">২৫০০</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* <!-- Content Section --> */}
-      <section className="mt-5 mb-1 bg-white px-5 py-3 rounded-lg shadow-sm">
-        <div className="flex items-center justify-between">
-          {/* Left Side Title */}
-          <h3 className="font-semibold border-b border-gray-200">
-            উপজেলা ভিত্তিক ফসলের আবাদের ও উৎপাদন
-          </h3>
-
-          {/* Right Side Buttons (hidden on small screens) */}
-          <div className="items-center space-x-3 sm:flex">
-            <div className="flex items-center gap-2">
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                Export CSV
-              </button>
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                <IoPrintOutline className="text-xl" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Close the flex container */}
-
-      <section className="bg-white shadow-md rounded-lg px-6 py-4">
-        <div className="flex justify-between items-center mb-4 flex-wrap">
-          <div className="flex items-center space-x-3 text-sm mb-3 md:mb-0">
-            <span>অর্থবছর</span>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>২০২৫-২৬</option>
-              <option>২০২৪-২৫</option>
-              <option>২০২৩-২৪</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>মৌসুম</option>
-              <option>রবি</option>
-              <option>খরিপ-১</option>
-              <option>খরিপ-২</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>ফসল</option>
-              <option>আউশ</option>
-              <option>আমন</option>
-              <option>বোরো</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>জাত</option>
-              <option>ব্রি ধান-৮৯</option>
-              <option>ব্রি ধান-৫২</option>
-              <option>হাইসান-৩৩</option>
-              <option>বারি মুগ-৬</option>
-            </select>
-            <div className="flex space-x-2 flex-wrap mt-2 sm:mt-0">
-              <button className="px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm hover:bg-gray-300 transition-colors cursor-pointer">
-                + Add New
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <span>Search:</span>
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        {/* <!-- Table --> */}
-        <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>ক্র. নং</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>উপজেলার নাম</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>লক্ষ্যমাত্রা</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>আবাদ</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center justify-center space-x-1">
-                    <span>উৎপাদন</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center justify-center space-x-1">
-                    <span>ফলন/হে.</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <span>Actions</span>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  101
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
-                  <div className="font-medium">পটুয়াখালী সদর</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>১৫০০০ হেক্টর</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  102
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-left">
-                  <div className="font-medium">পটুয়াখালী সদর</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>১৫০০০ হেক্টর</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  103
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-left">
-                  <div className="font-medium">পটুয়াখালী সদর</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>১৫০০০ হেক্টর</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  104
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-left">
-                  <div className="font-medium">পটুয়াখালী সদর</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>১৫০০০ হেক্টর</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
-          <span>Showing 0 to 0 of 0 entries</span>
-          <div className="flex space-x-2 mt-2 sm:mt-0">
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Previous
-            </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Next
-            </button>
-          </div>
-        </div>
-      </section>
-      {/* <!-- Content Section --> */}
-      <section className="mt-5 mb-1 bg-white px-5 py-3 rounded-lg shadow-sm">
-        <div className="flex items-center justify-between">
-          {/* Left Side Title */}
-          <h3 className="font-semibold border-b border-gray-300">
-            জাতভিত্তিক চুড়ান্ত আবাদ ও উৎপাদন
-          </h3>
-
-          {/* Right Side Buttons (hidden on small screens) */}
-          <div className="flex items-center space-x-3 hidden sm:flex">
-            <div className="flex items-center gap-2">
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                Export CSV
-              </button>
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                <IoPrintOutline className="text-xl" />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* Close flex container */}
-      </section>
-
-      <div className="bg-white shadow-md rounded-lg px-6 py-4">
-        <div className="flex justify-between items-center mb-4 flex-wrap">
-          <div className="flex items-center space-x-3 text-sm mb-3 md:mb-0">
-            <span>Show</span>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>10</option>
-            </select>
-            <span>অর্থবছর</span>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>২০২৫-২৬</option>
-              <option>২০২৪-২৫</option>
-              <option>২০২৩-২৪</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>মৌসুম</option>
-              <option>রবি</option>
-              <option>খরিপ-১</option>
-              <option>খরিপ-২</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>ফসল</option>
-              <option>আউশ</option>
-              <option>আমন</option>
-              <option>বোরো</option>
-            </select>
-            <div className="flex space-x-2 flex-wrap mt-2 sm:mt-0">
-              <button className="px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm hover:bg-gray-300 transition-colors cursor-pointer">
-                + Add New
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <span>Search:</span>
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        {/* <!-- Table --> */}
-        <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>ক্র. নং</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>ফসলের নাম</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>জাত</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>আবাদ</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center justify-center space-x-1">
-                    <span>উৎপাদন</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center justify-center space-x-1">
-                    <span>ফলন/হে.</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <span>Actions</span>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  101
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
-                  <div className="font-medium">বোরো</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>ব্রি ধান-৮৯</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  102
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-left">
-                  <div className="font-medium">বোরো</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>ব্রি ধান-২৯</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  103
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-left">
-                  <div className="font-medium">বোরো</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>ব্রি ধান-২৮</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ২০০ হেক্টর
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১০৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                  ১.৪০ মে.টন
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <MdDelete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
-          <span>Showing 0 to 0 of 0 entries</span>
-          <div className="flex space-x-2 mt-2 sm:mt-0">
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Previous
-            </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* ---------------New Overview---------------------------------- */}
-    <div>
-      <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen p-8">
-
-        <div className="max-w-7xl mx-auto">
-
-          {/* <!-- Header --> */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Overview Dashboard</h1>
-            <p className="text-gray-500 text-sm mt-1">
-              Monitor your IT assets and employee assignments
-            </p>
-          </div>
-
-          {/* <!-- Cards Grid --> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {/* <!-- Total Target --> */}
-            <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Total Target
-                </p>
-                <span className="text-blue-500 text-xl">🎯</span>
-              </div>
-
-              <h2 className="text-3xl font-bold text-blue-600 mt-4">
-                1,230 <span className="text-base font-medium text-gray-500">ha</span>
-              </h2>
-
-              <p className="text-sm text-gray-500 mt-2">5 crop targets</p>
-            </div>
-
-            {/* <!-- Achievements --> */}
-            <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Achievements
-                </p>
-                <span className="text-yellow-500 text-xl">🏆</span>
-              </div>
-
-              <h2 className="text-3xl font-bold text-yellow-600 mt-4">
-                4
-              </h2>
-
-              <p className="text-sm text-gray-500 mt-2">
-                3 sowing, 1 harvest
-              </p>
-            </div>
-            {/* <!-- Sowing Progress --> */}
-            <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Sowing Progress
-                </p>
-                <span className="text-purple-500 text-xl">🌱</span>
-              </div>
-
-              <h2 className="text-3xl font-bold text-purple-600 mt-4">
-                540 <span className="text-base font-medium text-gray-500">ha</span>
-              </h2>
-
-              {/* <!-- Progress Bar --> */}
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
-                <div className="bg-purple-500 h-2 rounded-full w-[44%]"></div>
-              </div>
-
-              <p className="text-sm text-red-500 mt-2 font-medium">
-                44% of target
-              </p>
-            </div>
-
-            {/* <!-- Production --> */}
-            <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Production
-                </p>
-                <span className="text-green-500 text-xl">📦</span>
-              </div>
-
-              <h2 className="text-3xl font-bold text-green-600 mt-4">
-                480 <span className="text-base font-medium text-gray-500">MT</span>
-              </h2>
-
-              <p className="text-sm text-gray-500 mt-2">
-                1 completed
-              </p>
-            </div>
-
-
-
-          </div>
-
-        </div>
-
-      </div>
-  </div>
-  <div>
-    <div class="bg-gray-100 p-6">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
+      {/* ---------------New Overview Cards---------------------------------- */}
+      <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* <!-- Total Target --> */}
-        <div class="bg-white rounded-xl shadow-sm border broder-gray-50 p-6">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Total Target
           </p>
@@ -919,40 +106,47 @@ const AgroProduction = () => {
           <p class="text-sm text-gray-500 mt-1">5 crop targets</p>
         </div>
         {/* <!-- Achievements --> */}
-        <div class="bg-white rounded-xl shadow-sm border p-6">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Achievements
           </p>
-          <h2 class="text-3xl font-bold text-yellow-500 mt-2">
-            4
-          </h2>
-          <p class="text-sm text-gray-500 mt-1">
-            3 sowing, 1 harvest
-          </p>
+          <h2 class="text-3xl font-bold text-yellow-500 mt-2">4</h2>
+          <p class="text-sm text-gray-500 mt-1">3 sowing, 1 harvest</p>
         </div>
         {/* <!-- Sowing Progress --> */}
-        <div class="bg-white rounded-xl shadow-sm border  p-6">
-          <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Sowing Progress
-          </p>
-          <h2 class="text-3xl font-bold text-purple-500 mt-2">
-            540 <span class="text-lg font-medium">ha</span>
+        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
+          <div>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              Sowing Progress
+            </p>
+          </div>
+
+          <h2 className="text-3xl font-bold text-purple-600 mt-4">
+            540 <span className="text-base font-medium text-gray-500">ha</span>
           </h2>
-          <p class="text-sm text-red-500 mt-1">44% of target</p>
+
+          {/* <!-- Progress Bar --> */}
+          <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
+            <div className="bg-purple-500 h-2 rounded-full w-[44%]"></div>
+          </div>
+
+          <p className="text-sm text-red-500 mt-2 font-medium">44% of target</p>
         </div>
 
         {/* <!-- Seedbed --> */}
-        <div class="bg-white rounded-xl shadow-sm border p-6">
-          <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Seedbed
-          </p>
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
+          <div>
+            <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+              Seedbed
+            </p>
+          </div>
           <h2 class="text-3xl font-bold text-green-500 mt-2">
             480 <span class="text-lg font-medium">MT</span>
           </h2>
           <p class="text-sm text-gray-500 mt-1">1 completed</p>
         </div>
         {/* <!-- Harvest --> */}
-        <div class="bg-white rounded-xl shadow-sm border  p-6">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Harvest Progress
           </p>
@@ -961,8 +155,8 @@ const AgroProduction = () => {
           </h2>
           <p class="text-sm text-red-500 mt-1">44% of Sowing</p>
         </div>
-      {/* <!-- Production --> */}
-        <div class="bg-white rounded-xl shadow-sm border p-6">
+        {/* <!-- Production --> */}
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Production
           </p>
@@ -971,8 +165,8 @@ const AgroProduction = () => {
           </h2>
           <p class="text-sm text-gray-500 mt-1">1 completed</p>
         </div>
-      {/* <!-- Damage --> */}
-        <div class="bg-white rounded-xl shadow-sm border  p-6">
+        {/* <!-- Damage --> */}
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Damage Progress
           </p>
@@ -982,10 +176,8 @@ const AgroProduction = () => {
           <p class="text-sm text-red-500 mt-1">44% of Sowing</p>
         </div>
 
-        
-
         {/* <!-- Harvest --> */}
-        <div class="bg-white rounded-xl shadow-sm border p-6">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
             Damage
           </p>
@@ -994,515 +186,635 @@ const AgroProduction = () => {
           </h2>
           <p class="text-sm text-gray-500 mt-1">1 completed</p>
         </div>
+      </section>
 
-
-      </div>
-
-    </div>
-  </div>
-  <div>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
+      {/* Tables and Info */}
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-2 py-8">
         {/* <!-- Left Large Card --> */}
-<div className="lg:col-span-3">
-        {/* Table -1 */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4">
-                    <h2 className="text-base font-semibold text-gray-800">
-                      Crops Overview
-                    </h2>
-                    <span className="text-sm text-gray-500">
-                      10 records
-                    </span>
+        <div className="lg:col-span-3">
+          {/* Table-1 Seedbed Overview */}
+          <div className="bg-white shadow-md rounded-lg px-4 py-4">
+            {/* Table Header */}
+            <div className="flex items-center justify-between pb-3">
+              <h2 className="text-base font-semibold text-gray-800">
+                Seedbed Overview
+              </h2>
+              <span className="text-sm text-gray-500">10 records</span>
             </div>
-            <div class="flex items-center justify-center text-center">
-                {/* No recent assignments found */}
-                {/* <p class="text-gray-400 italic">
-                  No recent assignments found
-                </p> */}
-                {/* Table */}
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs text-left">
-                    <thead className="bg-gray-50 text-xs uppercase text-gray-500 text-center border-t border-b border-gray-200">
-                      <tr>
-                        <th className="px-4 py-3">SL</th>
-                        <th className="px-4 py-3">Fin. Year</th>
-                        <th className="px-4 py-3">Session</th>
-                        <th className="px-4 py-3">Crop Name</th>
-                        <th className="px-4 py-3">Target</th>
-                        <th className="px-4 py-3">Achievement</th>
-                        <th className="px-4 py-3">Date</th>
-                        <th className="px-4 py-3 text-center">Actions</th>
-                      </tr>
-                    </thead>
+            {/* <!-- Table --> */}
+            <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>SL</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Fin. Year</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Session</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Crop Name</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Harvest</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Production</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Per Hec</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Updated At</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <span>Actions</span>
+                    </th>
+                  </tr>
+                </thead>
 
-                    <tbody className="divide-y divide-gray-100">
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          <td className="px-3 py-4">4500</td>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                        90%
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md capitalize">
+                        pending
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                Pending
-                              </span>
-
-                              <span>
-                                <span
-                                  className="text-green-600"
-                                >
-                                  90%
-                                </span>
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                                                <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          <td className="px-3 py-4">4500</td>
-
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                Pending
-                              </span>
-
-                              <span>
-                                <span
-                                  className="text-green-600"
-                                >
-                                  90%
-                                </span>
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                                                <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          <td className="px-3 py-4">4500</td>
-
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                430
-                              </span>
-
-                              <span>
-                                <span
-                                  className="text-green-600"
-                                >
-                                  40%
-                                </span>
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                                                <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          <td className="px-3 py-4">4500</td>
-
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                Pending
-                              </span>
-
-                              <span>
-                                <span
-                                  className="text-green-600"
-                                >
-                                  90%
-                                </span>
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
+              <span>Showing 0 to 0 of 0 entries</span>
+              <div className="flex space-x-2 mt-2 sm:mt-0">
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Previous
+                </button>
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
-        {/* Table -2 */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-4">
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4">
-                    <h2 className="text-base font-semibold text-gray-800">
-                      Harvest Overview
-                    </h2>
-                    <span className="text-sm text-gray-500">
-                      10 records
-                    </span>
+          {/* Table-2 Crops Overview */}
+          <div className="bg-white shadow-md rounded-lg px-4 py-4 mt-5">
+            {/* Table Header */}
+            <div className="flex items-center justify-between pb-3">
+              <h2 className="text-base font-semibold text-gray-800">
+                Crops Overview
+              </h2>
+              <span className="text-sm text-gray-500">10 records</span>
             </div>
-            <div class="flex items-center justify-center text-center">
-                {/* No recent assignments found */}
-                {/* <p class="text-gray-400 italic">
-                  No recent assignments found
-                </p> */}
-                {/* Table */}
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs text-left">
-                    <thead className="bg-gray-50 text-xs uppercase text-gray-500 text-center border-t border-b border-gray-200">
-                      <tr>
-                        <th className="px-3 py-3">SL</th>
-                        <th className="px-3 py-3">Fin. Year</th>
-                        <th className="px-3 py-3">Session</th>
-                        <th className="px-3 py-3">Crop Name</th>
-                        <th className="px-3 py-3">Harvest</th>
-                        <th className="px-3 py-3">Production</th>
-                        <th className="px-3 py-3">Per Hec</th>
-                        <th className="px-3 py-3">Date</th>
-                        <th className="px-3 py-3 text-center">Actions</th>
-                      </tr>
-                    </thead>
+            {/* <!-- Table --> */}
+            <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>SL</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Fin. Year</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Session</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Crop Name</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Harvest</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Production</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Per Hec</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Updated At</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <span>Actions</span>
+                    </th>
+                  </tr>
+                </thead>
 
-                    <tbody className="divide-y divide-gray-100">
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                90%
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
-                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">2</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                90%
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
-                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                90%
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
-                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                90%
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
-                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition text-center">
-                          <td className="px-3 py-4">1</td>
-                          <td className="px-3 py-4 font-medium text-gray-700">
-                            2025-26
-                          </td>
-                          <td className="px-3 py-4">
-                            <span
-                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                            >
-                              Robi
-                            </span>
-                          </td>
-                          <td className="px-3 py-4 font-medium text-gray-800">
-                            Boro
-                          </td>
-                          {/* Achievement */}
-                          <td className="px-3 py-4">
-                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                                90%
-                              </span>
-                          </td>
-                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
-                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
-                          <td className="px-3 py-4">30 June 2026</td>
-                          {/* Actions */}
-                          <td className="px-3 py-4">
-                          <div className="flex justify-center gap-1">
-                            <a
-                              href="#"
-                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                            >
-                              <FaEye className="text-[16px]" />
-                            </a>
-                            <a
-                              href="#"
-                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                            >
-                              <FaPenToSquare className="text-[15px]" />
-                            </a>
-                          </div>
-                          </td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                        90%
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md capitalize">
+                        pending
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
+              <span>Showing 0 to 0 of 0 entries</span>
+              <div className="flex space-x-2 mt-2 sm:mt-0">
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Previous
+                </button>
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
-</div>
+          {/* Table-3 Harvest Overview */}
+          <div className="bg-white shadow-md rounded-lg px-4 py-4 mt-5">
+            {/* Table Header */}
+            <div className="flex items-center justify-between pb-3">
+              <h2 className="text-base font-semibold text-gray-800">
+                Harvest Overview
+              </h2>
+              <span className="text-sm text-gray-500">10 records</span>
+            </div>
+            {/* <!-- Table --> */}
+            <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>SL</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Fin. Year</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Session</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span>Crop Name</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Harvest</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Production</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Per Hec</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Updated At</span>
+                      </div>
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      <span>Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody className="bg-white divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                        90%
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      101
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                      <div className="font-medium">2025-26</div>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                      <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                        Robi
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                      Boro
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md capitalize">
+                        pending
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      4500 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      1.5 <sup>MT</sup>
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                      30 June 2026
+                    </td>
+                    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                      >
+                        <FaEye className="text-[16px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                      >
+                        <FaPenToSquare className="text-[15px]" />
+                      </a>
+                      <a
+                        href="#"
+                        className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                      >
+                        <MdDelete className="text-[18px]" />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
+              <span>Showing 0 to 0 of 0 entries</span>
+              <div className="flex space-x-2 mt-2 sm:mt-0">
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Previous
+                </button>
+                <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* <!-- Right Side --> */}
         <div className="lg:col-span-1">
           <div class="flex flex-col gap-6">
             {/* <!-- System Status --> */}
-            <div class="bg-white rounded-2xl shadow-sm border p-6">
+            <div class="bg-white shadow-md rounded-lg p-5">
               <h3 class="font-semibold text-gray-800 mb-4">
                 Category by Progress
               </h3>
 
               <div class="space-y-4 text-sm">
-
                 <div class="flex justify-between items-center">
                   <span class="text-gray-600">Seedbed</span>
                   <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
@@ -1519,22 +831,18 @@ const AgroProduction = () => {
 
                 <div class="flex justify-between items-center">
                   <span class="text-gray-600">Employee Coverage</span>
-                  <span class="font-semibold text-gray-800">
-                    100%
-                  </span>
+                  <span class="font-semibold text-gray-800">100%</span>
                 </div>
-
               </div>
             </div>
 
             {/* <!-- Available Resources --> */}
-            <div class="bg-white rounded-2xl shadow-sm border p-6">
+            <div class="bg-white shadow-md rounded-lg p-5">
               <h3 class="font-semibold text-gray-800 mb-4">
                 Target by Category
               </h3>
 
               <div class="space-y-4 text-sm">
-
                 <div class="flex justify-between">
                   <span class="text-gray-600">Rice</span>
                   <span class="text-blue-600 font-semibold">500 hec</span>
@@ -1549,7 +857,30 @@ const AgroProduction = () => {
                   <span class="text-gray-600">Vegitable</span>
                   <span class="text-red-500 font-semibold">100 hec</span>
                 </div>
+              </div>
+            </div>
 
+            {/* <!-- Available Resources --> */}
+            <div class="bg-white shadow-md rounded-lg p-5">
+              <h3 class="font-semibold text-gray-800 mb-4">
+                Target by Category
+              </h3>
+
+              <div class="space-y-4 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Rice</span>
+                  <span class="text-blue-600 font-semibold">500 hec</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Pulse</span>
+                  <span class="text-blue-600 font-semibold">155 hec</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Vegitable</span>
+                  <span class="text-red-500 font-semibold">100 hec</span>
+                </div>
               </div>
             </div>
 
@@ -1562,22 +893,17 @@ const AgroProduction = () => {
                     Review Data Accuracy
                   </h4>
                   <p class="text-sm text-blue-600 leading-relaxed">
-                    Please verify employee details, license expiry dates,
-                    and asset conditions regularly to ensure all information
-                    is current and accurate.
+                    Please verify employee details, license expiry dates, and
+                    asset conditions regularly to ensure all information is
+                    current and accurate.
                   </p>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-    </div>
-  </div>  
-
-
-</>
-
+      </div>
+    </>
   );
 };
 
