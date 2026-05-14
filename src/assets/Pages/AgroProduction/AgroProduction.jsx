@@ -971,7 +971,29 @@ const AgroProduction = () => {
           </h2>
           <p class="text-sm text-gray-500 mt-1">1 completed</p>
         </div>
+      {/* <!-- Damage --> */}
+        <div class="bg-white rounded-xl shadow-sm border  p-6">
+          <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+            Damage Progress
+          </p>
+          <h2 class="text-3xl font-bold text-purple-500 mt-2">
+            50 <span class="text-lg font-medium">ha</span>
+          </h2>
+          <p class="text-sm text-red-500 mt-1">44% of Sowing</p>
+        </div>
 
+        
+
+        {/* <!-- Harvest --> */}
+        <div class="bg-white rounded-xl shadow-sm border p-6">
+          <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+            Damage
+          </p>
+          <h2 class="text-3xl font-bold text-green-500 mt-2">
+            480 <span class="text-lg font-medium">MT</span>
+          </h2>
+          <p class="text-sm text-gray-500 mt-1">1 completed</p>
+        </div>
 
 
       </div>
@@ -980,268 +1002,579 @@ const AgroProduction = () => {
   </div>
   <div>
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
-
         {/* <!-- Left Large Card --> */}
-        <div class="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 py-2 px-6">
+<div className="lg:col-span-3">
+        {/* Table -1 */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
             {/* Header */}
-            <div className="flex items-center justify-between py-4">
-              <h2 className="text-base font-semibold text-gray-800">
-                Crops Overview
-              </h2>
-              <span className="text-sm text-gray-500">
-                10 records
-              </span>
+            <div className="flex items-center justify-between px-6 py-4">
+                    <h2 className="text-base font-semibold text-gray-800">
+                      Crops Overview
+                    </h2>
+                    <span className="text-sm text-gray-500">
+                      10 records
+                    </span>
             </div>
+            <div class="flex items-center justify-center text-center">
+                {/* No recent assignments found */}
+                {/* <p class="text-gray-400 italic">
+                  No recent assignments found
+                </p> */}
+                {/* Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left">
+                    <thead className="bg-gray-50 text-xs uppercase text-gray-500 text-center border-t border-b border-gray-200">
+                      <tr>
+                        <th className="px-4 py-3">SL</th>
+                        <th className="px-4 py-3">Fin. Year</th>
+                        <th className="px-4 py-3">Session</th>
+                        <th className="px-4 py-3">Crop Name</th>
+                        <th className="px-4 py-3">Target</th>
+                        <th className="px-4 py-3">Achievement</th>
+                        <th className="px-4 py-3">Date</th>
+                        <th className="px-4 py-3 text-center">Actions</th>
+                      </tr>
+                    </thead>
 
-
-          <div class="flex items-center justify-center h-64 text-center">
-            {/* No recent assignments found */}
-            {/* <p class="text-gray-400 italic">
-              No recent assignments found
-            </p> */}
-            {/* Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead className="bg-gray-50 text-xs uppercase text-gray-500 border-t border-b border-gray-200">
-                  <tr>
-                    <th className="px-6 py-3">SL</th>
-                    <th className="px-6 py-3">Fin. Year</th>
-                    <th className="px-6 py-3">Session</th>
-                    <th className="px-6 py-3">Upazila</th>
-                    <th className="px-6 py-3">Crop Name</th>
-                    <th className="px-6 py-3">Target</th>
-                    <th className="px-6 py-3">Achievement</th>
-                    <th className="px-6 py-3 text-center">Actions</th>
-                  </tr>
-                </thead>
-
-                <tbody className="divide-y divide-gray-100">
-                    <tr className="hover:bg-gray-50 transition">
-                      <td className="px-6 py-4">1</td>
-                      <td className="px-6 py-4 font-medium text-gray-700">
-                        2025-26
-                      </td>
-
-                      {/* Session Badge */}
-                      <td className="px-6 py-4">
-                        <span
-                          className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                        >
-                          Robi
-                        </span>
-                      </td>
-
-                      <td className="px-6 py-4">Patuakhali Sadar</td>
-                      <td className="px-6 py-4 font-medium text-gray-800">
-                        Boro
-                      </td>
-                      <td className="px-6 py-4">4500</td>
-
-                      {/* Achievement */}
-                      <td className="px-6 py-4">
-                          <span className="px-2 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                            Pending
-                          </span>
-
-                          <span>
+                    <tbody className="divide-y divide-gray-100">
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
                             <span
-                              className="text-green-600"
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
                             >
-                              90%
+                              Robi
                             </span>
-                          </span>
-                      </td>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          <td className="px-3 py-4">4500</td>
 
-                      {/* Actions */}
-                      <td className="px-6 py-4">
-                        <div className="flex justify-center gap-2">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <FaEye className="text-[16px]" />
-                  </a>
-                          <button className="px-2 py-1 border rounded-lg hover:bg-gray-100">
-                            ✏
-                          </button>
-                          <button className="px-2 py-1 border rounded-lg hover:bg-gray-100 text-red-500">
-                            🗑
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                </tbody>
-              </table>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                Pending
+                              </span>
+
+                              <span>
+                                <span
+                                  className="text-green-600"
+                                >
+                                  90%
+                                </span>
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                                                <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          <td className="px-3 py-4">4500</td>
+
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                Pending
+                              </span>
+
+                              <span>
+                                <span
+                                  className="text-green-600"
+                                >
+                                  90%
+                                </span>
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                                                <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          <td className="px-3 py-4">4500</td>
+
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                430
+                              </span>
+
+                              <span>
+                                <span
+                                  className="text-green-600"
+                                >
+                                  40%
+                                </span>
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                                                <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          <td className="px-3 py-4">4500</td>
+
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                Pending
+                              </span>
+
+                              <span>
+                                <span
+                                  className="text-green-600"
+                                >
+                                  90%
+                                </span>
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
             </div>
           </div>
-        </div>
+        {/* Table -2 */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-4">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4">
+                    <h2 className="text-base font-semibold text-gray-800">
+                      Harvest Overview
+                    </h2>
+                    <span className="text-sm text-gray-500">
+                      10 records
+                    </span>
+            </div>
+            <div class="flex items-center justify-center text-center">
+                {/* No recent assignments found */}
+                {/* <p class="text-gray-400 italic">
+                  No recent assignments found
+                </p> */}
+                {/* Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left">
+                    <thead className="bg-gray-50 text-xs uppercase text-gray-500 text-center border-t border-b border-gray-200">
+                      <tr>
+                        <th className="px-3 py-3">SL</th>
+                        <th className="px-3 py-3">Fin. Year</th>
+                        <th className="px-3 py-3">Session</th>
+                        <th className="px-3 py-3">Crop Name</th>
+                        <th className="px-3 py-3">Harvest</th>
+                        <th className="px-3 py-3">Production</th>
+                        <th className="px-3 py-3">Per Hec</th>
+                        <th className="px-3 py-3">Date</th>
+                        <th className="px-3 py-3 text-center">Actions</th>
+                      </tr>
+                    </thead>
 
+                    <tbody className="divide-y divide-gray-100">
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                90%
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
+                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">2</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                90%
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
+                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                90%
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
+                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                90%
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
+                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-gray-50 transition text-center">
+                          <td className="px-3 py-4">1</td>
+                          <td className="px-3 py-4 font-medium text-gray-700">
+                            2025-26
+                          </td>
+                          <td className="px-3 py-4">
+                            <span
+                              className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
+                            >
+                              Robi
+                            </span>
+                          </td>
+                          <td className="px-3 py-4 font-medium text-gray-800">
+                            Boro
+                          </td>
+                          {/* Achievement */}
+                          <td className="px-3 py-4">
+                              <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
+                                90%
+                              </span>
+                          </td>
+                          <td className="px-3 py-4">4500 <sup>MT</sup></td>
+                          <td className="px-3 py-4">1.3 <sup>MT</sup></td>
+                          <td className="px-3 py-4">30 June 2026</td>
+                          {/* Actions */}
+                          <td className="px-3 py-4">
+                          <div className="flex justify-center gap-1">
+                            <a
+                              href="#"
+                              className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
+                            >
+                              <FaEye className="text-[16px]" />
+                            </a>
+                            <a
+                              href="#"
+                              className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                            >
+                              <FaPenToSquare className="text-[15px]" />
+                            </a>
+                          </div>
+                          </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+</div>
         {/* <!-- Right Side --> */}
-        <div class="flex flex-col gap-6">
-          {/* <!-- System Status --> */}
-          <div class="bg-white rounded-2xl shadow-sm border p-6">
-            <h3 class="font-semibold text-gray-800 mb-4">
-              Category by Progress
-            </h3>
+        <div className="lg:col-span-1">
+          <div class="flex flex-col gap-6">
+            {/* <!-- System Status --> */}
+            <div class="bg-white rounded-2xl shadow-sm border p-6">
+              <h3 class="font-semibold text-gray-800 mb-4">
+                Category by Progress
+              </h3>
 
-            <div class="space-y-4 text-sm">
+              <div class="space-y-4 text-sm">
 
-              <div class="flex justify-between items-center">
-                <span class="text-gray-600">Seedbed</span>
-                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
-                  ✓ Good
-                </span>
-              </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Seedbed</span>
+                  <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
+                    ✓ Good
+                  </span>
+                </div>
 
-              <div class="flex justify-between items-center">
-                <span class="text-gray-600">License Status</span>
-                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
-                  0 Active
-                </span>
-              </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">License Status</span>
+                  <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
+                    0 Active
+                  </span>
+                </div>
 
-              <div class="flex justify-between items-center">
-                <span class="text-gray-600">Employee Coverage</span>
-                <span class="font-semibold text-gray-800">
-                  100%
-                </span>
-              </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Employee Coverage</span>
+                  <span class="font-semibold text-gray-800">
+                    100%
+                  </span>
+                </div>
 
-            </div>
-          </div>
-
-          {/* <!-- Available Resources --> */}
-          <div class="bg-white rounded-2xl shadow-sm border p-6">
-            <h3 class="font-semibold text-gray-800 mb-4">
-              Target by Category
-            </h3>
-
-            <div class="space-y-4 text-sm">
-
-              <div class="flex justify-between">
-                <span class="text-gray-600">Rice</span>
-                <span class="text-blue-600 font-semibold">500 hec</span>
-              </div>
-
-              <div class="flex justify-between">
-                <span class="text-gray-600">Pulse</span>
-                <span class="text-blue-600 font-semibold">155 hec</span>
-              </div>
-
-              <div class="flex justify-between">
-                <span class="text-gray-600">Vegitable</span>
-                <span class="text-red-500 font-semibold">100 hec</span>
-              </div>
-
-            </div>
-          </div>
-
-          {/* <!-- Info Box --> */}
-          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-            <div class="flex gap-3">
-              <div class="text-yellow-500 text-xl">💡</div>
-              <div>
-                <h4 class="font-semibold text-blue-700 mb-1">
-                  Review Data Accuracy
-                </h4>
-                <p class="text-sm text-blue-600 leading-relaxed">
-                  Please verify employee details, license expiry dates,
-                  and asset conditions regularly to ensure all information
-                  is current and accurate.
-                </p>
               </div>
             </div>
-          </div>
 
+            {/* <!-- Available Resources --> */}
+            <div class="bg-white rounded-2xl shadow-sm border p-6">
+              <h3 class="font-semibold text-gray-800 mb-4">
+                Target by Category
+              </h3>
+
+              <div class="space-y-4 text-sm">
+
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Rice</span>
+                  <span class="text-blue-600 font-semibold">500 hec</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Pulse</span>
+                  <span class="text-blue-600 font-semibold">155 hec</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Vegitable</span>
+                  <span class="text-red-500 font-semibold">100 hec</span>
+                </div>
+
+              </div>
+            </div>
+
+            {/* <!-- Info Box --> */}
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+              <div class="flex gap-3">
+                <div class="text-yellow-500 text-xl">💡</div>
+                <div>
+                  <h4 class="font-semibold text-blue-700 mb-1">
+                    Review Data Accuracy
+                  </h4>
+                  <p class="text-sm text-blue-600 leading-relaxed">
+                    Please verify employee details, license expiry dates,
+                    and asset conditions regularly to ensure all information
+                    is current and accurate.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-
     </div>
   </div>  
 
-    {/* Table */}
-
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-10">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4">
-        <h2 className="text-base font-semibold text-gray-800">
-          Crops Overview
-        </h2>
-        <span className="text-sm text-gray-500">
-          10 records
-        </span>
-      </div>
-
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left">
-          <thead className="bg-gray-50 text-xs uppercase text-gray-500 border-t border-b border-gray-200">
-            <tr>
-              <th className="px-6 py-3">SL</th>
-              <th className="px-6 py-3">Fin. Year</th>
-              <th className="px-6 py-3">Session</th>
-              <th className="px-6 py-3">Upazila</th>
-              <th className="px-6 py-3">Crop Name</th>
-              <th className="px-6 py-3">Target</th>
-              <th className="px-6 py-3">Achievement</th>
-              <th className="px-6 py-3 text-center">Actions</th>
-            </tr>
-          </thead>
-
-          <tbody className="divide-y divide-gray-100">
-              <tr className="hover:bg-gray-50 transition">
-                <td className="px-6 py-4">1</td>
-                <td className="px-6 py-4 font-medium text-gray-700">
-                  2025-26
-                </td>
-
-                <td className="px-6 py-4">
-                  <span
-                    className="px-2 py-1 text-xs font-medium rounded-md bg-green-100 text-green-700"
-                  >
-                    Robi
-                  </span>
-                </td>
-
-                <td className="px-6 py-4">Patuakhali Sadar</td>
-                <td className="px-6 py-4 font-medium text-gray-800">
-                  Boro
-                </td>
-                <td className="px-6 py-4">4500</td>
-
-                {/* Achievement */}
-                <td className="px-6 py-4">
-                    <span className="px-2 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                      Pending
-                    </span>
-
-                    <span>
-                      <span
-                        className="text-green-600"
-                      >
-                        90%
-                      </span>
-                    </span>
-                </td>
-
-                {/* Actions */}
-                <td className="px-6 py-4">
-                  <div className="flex justify-center gap-2">
-                    <button className="px-2 py-1 border rounded-lg hover:bg-gray-100">
-                      👁
-                    </button>
-                    <button className="px-2 py-1 border rounded-lg hover:bg-gray-100">
-                      ✏
-                    </button>
-                    <button className="px-2 py-1 border rounded-lg hover:bg-gray-100 text-red-500">
-                      🗑
-                    </button>
-                  </div>
-                </td>
-              </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
 
 </>
 
