@@ -1,13 +1,23 @@
-export default function ViewForm({ item, onClose, handleEdit }) {
+export default function HarvestForm({ item, onClose, handleEdit }) {
   if (!item) return null;
 
   const total =
     item?.varieties?.reduce(
-      (sum, v) => sum + (parseFloat(v.achievement) || 0),
+      (sum, v) => sum + (parseFloat(v.production) || 0),
       0,
     ) || 0;
 
-  const pct = item?.target ? Math.round((total / item.target) * 100) : 0;
+  // total harvest
+  const hvr =
+    item?.varieties?.reduce(
+      (sum, e) => sum + (parseFloat(e.harvest) || 0),
+      0,
+    ) || 0;
+
+  // Progress Parsentage
+  const pct = item?.achievement
+    ? Math.round((hvr / item.achievement) * 100)
+    : 0;
 
   const color =
     pct >= 100 ? "bg-emerald-600" : pct >= 60 ? "bg-amber-500" : "bg-red-500";
@@ -18,8 +28,8 @@ export default function ViewForm({ item, onClose, handleEdit }) {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">
-              {item?.crop_name}
+            <h2 className="text-xl font-semibold text-gray-800 capitalize">
+              harverst crop : {item?.crop_name}
             </h2>
 
             <p className="mt-1 text-sm text-gray-500">
@@ -42,11 +52,12 @@ export default function ViewForm({ item, onClose, handleEdit }) {
             {/* Card */}
             <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
               <p className="text-xs uppercase tracking-wider text-blue-500">
-                Total Target
+                Total Harvest
               </p>
 
               <h3 className="mt-2 text-3xl font-bold text-blue-700">
-                {(item?.target || 0).toLocaleString()}
+                {/* {(item?.target || 0).toLocaleString()} */}
+                {hvr}
               </h3>
 
               <p className="mt-1 text-sm text-blue-500">Hectare</p>
@@ -54,14 +65,14 @@ export default function ViewForm({ item, onClose, handleEdit }) {
             {/* Card */}
             <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
               <p className="text-xs uppercase tracking-wider text-emerald-500">
-                Achievement
+                Production
               </p>
 
               <h3 className="mt-2 text-3xl font-bold text-emerald-700">
                 {total.toLocaleString()}
               </h3>
 
-              <p className="mt-1 text-sm text-emerald-500">Hectare</p>
+              <p className="mt-1 text-sm text-emerald-500 capitalize">mt</p>
             </div>
             {/* Card */}
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
@@ -104,9 +115,17 @@ export default function ViewForm({ item, onClose, handleEdit }) {
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                       Variety Name
                     </th>
-
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                      Achievement
+                      cultivated
+                    </th>
+                    <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Harvest
+                    </th>
+                    <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Production/Hec
+                    </th>
+                    <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Total Production
                     </th>
 
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -116,12 +135,13 @@ export default function ViewForm({ item, onClose, handleEdit }) {
                 </thead>
 
                 <tbody>
-                  {item?.varieties?.length > 0 ? (
+                  {/* {item?.varieties?.length > 0 ? (item.varieties.map((v, i) => {
+                      const share = item?.target? Math.round(((v?.achievement || 0) / item.target) * 100,): 0; */}
+
+                  {item.varieties?.length > 0 ? (
                     item.varieties.map((v, i) => {
-                      const share = item?.target
-                        ? Math.round(
-                            ((v?.achievement || 0) / item.target) * 100,
-                          )
+                      const share = v?.cultivated
+                        ? Math.round(((v?.harvest || 0) / v.cultivated) * 100)
                         : 0;
 
                       return (
@@ -133,9 +153,22 @@ export default function ViewForm({ item, onClose, handleEdit }) {
                           <td className="border-b border-gray-100 px-4 py-3 text-sm font-medium text-gray-800">
                             {v?.name}
                           </td>
-
                           <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700">
-                            {(v?.achievement || 0).toLocaleString()} ha
+                            {(v?.cultivated || 0).toLocaleString()}{" "}
+                            <sup>ha</sup>
+                          </td>
+                          <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700">
+                            {(v?.harvest || 0).toLocaleString()} <sup>ha</sup>
+                          </td>
+                          <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700 capitalize">
+                            {(v?.production_per_hector || 0).toLocaleString()}{" "}
+                            <sup>mt</sup>
+                          </td>
+                          <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700 capitalize">
+                            {(
+                              v?.production_per_hector * v?.harvest || 0
+                            ).toLocaleString()}{" "}
+                            <sup>mt</sup>
                           </td>
 
                           <td className="border-b border-gray-100 px-4 py-3">
@@ -169,7 +202,7 @@ export default function ViewForm({ item, onClose, handleEdit }) {
                   )}
                 </tbody>
 
-                {item?.varieties?.length > 0 && (
+                {item?.harvest?.length > 0 && (
                   <tfoot>
                     <tr className="bg-emerald-50">
                       <td

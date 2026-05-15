@@ -13,7 +13,7 @@ const VARIETIES = [
   "Other",
 ];
 
-const EditFormModal = () => {
+const EditFormModal = ({ handleClose }) => {
   // Initial state with sample data
   const [rows, setRows] = useState([
     { name: "BARI Gom-25", achievement_ha: 640 },
@@ -71,7 +71,7 @@ const EditFormModal = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-6 font-sans bg-gray-200">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
       <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-xl">
         {/* HEADER */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
@@ -242,7 +242,10 @@ const EditFormModal = () => {
             * All area values in hectares (ha)
           </p>
           <div className="flex gap-2">
-            <button className="rounded border border-gray-200 bg-gray-700 px-4 text-white py-2 text-[13px] hover:bg-gray-950 transition-colors cursor-pointer">
+            <button
+              onClick={handleClose}
+              className="rounded border border-gray-200 bg-gray-700 px-4 text-white py-2 text-[13px] hover:bg-gray-950 transition-colors cursor-pointer"
+            >
               Cancel
             </button>
             <button

@@ -1,4 +1,4 @@
-export default function ViewForm({ item, onClose, handleEdit }) {
+export default function SowingForm({ item, onClose, handleEdit }) {
   if (!item) return null;
 
   const total =
