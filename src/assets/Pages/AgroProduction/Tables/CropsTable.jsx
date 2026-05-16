@@ -93,7 +93,7 @@ const CropsTable = ({ onCropInfo, data }) => {
 
           <tbody className="bg-white divide-y divide-gray-200">
             {sowingData?.map((item) => (
-              <tr key={item}>
+              <tr key={item.id}>
                 <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                   {item?.id}
                 </td>

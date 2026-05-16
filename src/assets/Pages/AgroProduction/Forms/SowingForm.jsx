@@ -79,7 +79,9 @@ export default function SowingForm({ item, onClose, handleEdit }) {
                 Total Variety
               </p>
 
-              <h3 className="mt-2 text-3xl font-bold text-purple-700">5</h3>
+              <h3 className="mt-2 text-3xl font-bold text-purple-700">
+                {item?.varieties?.length || "0"}
+              </h3>
 
               <p className="mt-1 text-sm text-purple-500">Completion Rate</p>
             </div>
@@ -104,6 +106,11 @@ export default function SowingForm({ item, onClose, handleEdit }) {
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                       Variety Name
                     </th>
+                    {item.crop_type === "rice" && (
+                      <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        Category
+                      </th>
+                    )}
 
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                       Achievement
@@ -133,6 +140,11 @@ export default function SowingForm({ item, onClose, handleEdit }) {
                           <td className="border-b border-gray-100 px-4 py-3 text-sm font-medium text-gray-800">
                             {v?.name}
                           </td>
+                          {item.crop_type === "rice" && (
+                            <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700 uppercase">
+                              {v?.category_of || ""}
+                            </td>
+                          )}
 
                           <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700">
                             {(v?.achievement || 0).toLocaleString()} ha
@@ -168,27 +180,6 @@ export default function SowingForm({ item, onClose, handleEdit }) {
                     </tr>
                   )}
                 </tbody>
-
-                {item?.varieties?.length > 0 && (
-                  <tfoot>
-                    <tr className="bg-emerald-50">
-                      <td
-                        colSpan={2}
-                        className="border-t border-emerald-100 px-4 py-4 text-sm font-semibold text-emerald-700"
-                      >
-                        Total
-                      </td>
-
-                      <td className="border-t border-emerald-100 px-4 py-4 text-sm font-semibold text-emerald-700">
-                        {total.toLocaleString()} ha
-                      </td>
-
-                      <td className="border-t border-emerald-100 px-4 py-4 text-sm font-semibold text-emerald-700">
-                        {pct}%
-                      </td>
-                    </tr>
-                  </tfoot>
-                )}
               </table>
             </div>
           </div>

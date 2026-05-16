@@ -2,7 +2,9 @@ import { FaEye } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
-const SeedbedTable = ({ onCropInfo }) => {
+const SeedbedTable = ({ onCropInfo, data }) => {
+  const seedbedData = data.filter((item) => item.category === "seedbed");
+  console.log(seedbedData);
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4">
       {/* Table Header */}
@@ -83,48 +85,58 @@ const SeedbedTable = ({ onCropInfo }) => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            <tr>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                101
+            {seedbedData?.length > 0 ? (
+              seedbedData.map((item) => (
+                <tr key={item.id}>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                    {item?.id}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
+                    <div className="font-medium">{item?.f_year}</div>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                    <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                      {item?.crop_session}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                    {item?.crop_name}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
+                    {item?.target} <sup>hec</sup>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                    {item?.target}{" "}
+                    <sup className="px-2 py-1 font-medium bg-red-100 text-red-600 rounded-md">
+                      90%
+                    </sup>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                    {item?.createAt}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                    <button
+                      className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block cursor-pointer"
+                      onClick={() => {
+                        onCropInfo(item);
+                      }}
+                    >
+                      <FaEye className="text-[16px]" />
+                    </button>
+                    <button className="text-green-600 hover:text-green-900 px-2 py-1 inline-block cursor-pointer">
+                      <FaPenToSquare className="text-[15px]" />
+                    </button>
+                    <button className="text-red-600 hover:text-red-900 px-2 py-1 inline-block cursor-pointer">
+                      <MdDelete className="text-[18px]" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <td colSpan="8" className="text-center py-4">
+                No Data Found
               </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
-                <div className="font-medium">2025-26</div>
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
-                  Robi
-                </span>
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                Boro
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
-                4500 <sup>hec</sup>
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                4100{" "}
-                <sup className="px-2 py-1 font-medium bg-red-100 text-red-600 rounded-md">
-                  90%
-                </sup>
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                30 June 2026
-              </td>
-              <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
-                <button
-                  className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block cursor-pointer"
-                  onClick={onCropInfo}
-                >
-                  <FaEye className="text-[16px]" />
-                </button>
-                <button className="text-green-600 hover:text-green-900 px-2 py-1 inline-block cursor-pointer">
-                  <FaPenToSquare className="text-[15px]" />
-                </button>
-                <button className="text-red-600 hover:text-red-900 px-2 py-1 inline-block cursor-pointer">
-                  <MdDelete className="text-[18px]" />
-                </button>
-              </td>
-            </tr>
+            )}
           </tbody>
         </table>
       </div>

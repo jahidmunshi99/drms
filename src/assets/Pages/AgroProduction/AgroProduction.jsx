@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoPrintOutline } from "react-icons/io5";
 import EditFormModal from "./EditFormModal";
 import HarvestForm from "./Forms/HarvestForm";
+import SeedbedFrom from "./Forms/SeedbedFrom";
 import SowingForm from "./Forms/SowingForm";
 import CropsTable from "./Tables/CropsTable";
 import HarvestTable from "./Tables/HarvestTable";
@@ -10,8 +11,10 @@ import SeedbedTable from "./Tables/SeedbedTable";
 const AgroProduction = () => {
   const [show, setShow] = useState(false);
   const [showHarvest, setShowHarvest] = useState(false);
+  const [showSeedbed, setShowSeedbed] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [cropInfo, setCropInfo] = useState(null);
+  const [seedbedInfo, setSeedbedInfo] = useState(null);
   const [harvestInfo, setHarvesInfo] = useState(null);
   const data = [
     {
@@ -28,32 +31,32 @@ const AgroProduction = () => {
       varieties: [
         {
           name: "BARI Gom-26",
-          achievement: 50,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 30,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 20,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 100,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 80,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 20,
+          achievement: 55,
           createAt: "25-june-2026",
         },
       ],
@@ -66,38 +69,39 @@ const AgroProduction = () => {
       districtId: "patuakhali",
       upazilaId: "sadar",
       crop_name: "masterd",
+      crop_type: "oilseed",
       category: "sowing",
       target: 1500,
       createAt: "25-june-2026",
       varieties: [
         {
-          name: "BARI Gom-26",
-          achievement: 500,
+          name: "BARI Sarisha-6",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BARI Sarisha-7",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BARI Sarisha-8",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BARI Sarisha-9",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BARI Sarisha-14",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BARI Sarisha-15",
+          achievement: 55,
           createAt: "25-june-2026",
         },
       ],
@@ -109,39 +113,46 @@ const AgroProduction = () => {
       divisionId: "barisal",
       districtId: "patuakhali",
       upazilaId: "sadar",
-      crop_name: "watermelon",
+      crop_type: "rice",
+      crop_name: "boro",
       category: "sowing",
-      target: 1500,
+      target: 600,
       createAt: "25-june-2026",
       varieties: [
         {
-          name: "BARI Gom-26",
-          achievement: 500,
+          name: "BRRI dhan28",
+          category_of: "hyv",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BRRI dhan114",
+          category_of: "hyv",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "Others",
+          category_of: "local",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BRRI dhan99",
+          category_of: "hyv",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BRRI dhan97",
+          category_of: "hyv",
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
-          name: "BARI Gom-28",
-          achievement: 300,
+          name: "BRRI Hybrid dhan9",
+          category_of: "Hybrid",
+          achievement: 55,
           createAt: "25-june-2026",
         },
       ],
@@ -153,6 +164,7 @@ const AgroProduction = () => {
       divisionId: "barisal",
       districtId: "patuakhali",
       upazilaId: "sadar",
+      crop_type: "oilseed",
       crop_name: "sunflowar",
       category: "sowing",
       target: 1500,
@@ -160,32 +172,32 @@ const AgroProduction = () => {
       varieties: [
         {
           name: "BARI-16",
-          achievement: 500,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 300,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 300,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 300,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 300,
+          achievement: 55,
           createAt: "25-june-2026",
         },
         {
           name: "BARI Gom-28",
-          achievement: 300,
+          achievement: 55,
           createAt: "25-june-2026",
         },
       ],
@@ -197,6 +209,7 @@ const AgroProduction = () => {
       divisionId: "barisal",
       districtId: "patuakhali",
       upazilaId: "sadar",
+      crop_type: "oilseed",
       crop_name: "sunflowar",
       category: "harvest",
       achievement: 245,
@@ -252,6 +265,39 @@ const AgroProduction = () => {
         },
       ],
     },
+    {
+      id: "1",
+      f_year: "2025-26",
+      crop_session: "robi",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "sadar",
+      crop_type: "rice",
+      crop_name: "boro",
+      category: "seedbed",
+      createAt: "25-june-2026",
+      varieties: [
+        {
+          name: "hyv",
+          target: 600,
+          achievement: 450,
+          createAt: "25-june-2026",
+        },
+        {
+          name: "local",
+          target: 35,
+          achievement: 30,
+          createAt: "25-june-2026",
+        },
+        {
+          name: "hybrid",
+          category_of: "Hybrid",
+          target: 50,
+          achievement: 25,
+          createAt: "25-june-2026",
+        },
+      ],
+    },
   ];
 
   const handleClose = () => {
@@ -265,9 +311,15 @@ const AgroProduction = () => {
 
   const onCropInfo = (item) => {
     setCropInfo(item);
-
     setShow(!show);
   };
+
+  const onSeedBedInfo = (item) => {
+    console.log(item);
+    setSeedbedInfo(item);
+    setShowSeedbed(!showSeedbed);
+  };
+
   const onHarvestInfo = (item) => {
     setHarvesInfo(item);
     setShowHarvest(!showHarvest);
@@ -287,6 +339,13 @@ const AgroProduction = () => {
         <HarvestForm
           item={harvestInfo}
           onClose={() => setShowHarvest(false)}
+          handleEdit={handleEdit}
+        />
+      )}
+      {showSeedbed && (
+        <SeedbedFrom
+          item={seedbedInfo}
+          onClose={() => setShowSeedbed(!showSeedbed)}
           handleEdit={handleEdit}
         />
       )}
@@ -436,7 +495,7 @@ const AgroProduction = () => {
         {/* <!-- Left Large Card --> */}
         <div className="lg:col-span-3">
           {/* Table-1 Seedbed Overview */}
-          <SeedbedTable onCropInfo={onCropInfo} data={data} />
+          <SeedbedTable onCropInfo={onSeedBedInfo} data={data} />
           {/* Table-2 Crops Overview */}
           <CropsTable onCropInfo={onCropInfo} data={data} />
           {/* Table-3 Harvest Overview */}
