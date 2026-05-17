@@ -7,7 +7,7 @@ const Layout = () => {
     <div className="bg-gray-100">
       <Header />
       <Sidebar />
-      <main className="mx-5 md:px-5 md:ml-70 pt-23 mb-15 rounded">
+      <main className="mx-3 md:px-3 md:ml-65 pt-23 rounded">
         <AppRoute />
       </main>
     </div>

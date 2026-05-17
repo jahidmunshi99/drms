@@ -11,7 +11,7 @@ import { NavLink } from "react-router";
 
 export const Sidebar = () => {
   return (
-    <aside className="fixed top-0 left-0 h-screen w-65 bg-gray-800 text-white flex flex-col overflow-y-auto shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50">
+    <aside className="fixed top-0 left-0 h-screen w-63 bg-gray-800 text-white flex flex-col overflow-y-auto shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50">
       {/* <!-- User Profile --> */}
       <div className="px-6 py-4 border-b border-gray-700 text-center flex-shrink-0 relative">
         <button

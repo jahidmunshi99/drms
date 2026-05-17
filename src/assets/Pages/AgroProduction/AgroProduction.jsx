@@ -491,7 +491,7 @@ const AgroProduction = () => {
       </section>
 
       {/* Tables and Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-2 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 mt-2 py-8">
         {/* <!-- Left Large Card --> */}
         <div className="lg:col-span-3">
           {/* Table-1 Seedbed Overview */}

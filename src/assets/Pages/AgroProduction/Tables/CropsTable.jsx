@@ -20,7 +20,7 @@ const CropsTable = ({ onCropInfo, data }) => {
             <tr>
               <th
                 scope="col"
-                className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center space-x-1">
                   <span>SL</span>
@@ -36,7 +36,7 @@ const CropsTable = ({ onCropInfo, data }) => {
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center space-x-1">
                   <span>Session</span>
@@ -52,7 +52,7 @@ const CropsTable = ({ onCropInfo, data }) => {
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center justify-center space-x-1">
                   <span>Target</span>
@@ -60,7 +60,7 @@ const CropsTable = ({ onCropInfo, data }) => {
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center justify-center space-x-1">
                   <span>Achivement</span>
@@ -68,7 +68,7 @@ const CropsTable = ({ onCropInfo, data }) => {
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center justify-center space-x-1">
                   <span>Progress</span>
@@ -84,7 +84,7 @@ const CropsTable = ({ onCropInfo, data }) => {
               </th>
               <th
                 scope="col"
-                className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <span>Actions</span>
               </th>
@@ -94,13 +94,13 @@ const CropsTable = ({ onCropInfo, data }) => {
           <tbody className="bg-white divide-y divide-gray-200">
             {sowingData?.map((item) => (
               <tr key={item.id}>
-                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
+                <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                   {item?.id}
                 </td>
                 <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
                   <div className="font-medium">{item?.f_year}</div>
                 </td>
-                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
+                <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
                   <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md capitalize">
                     {item?.crop_session}
                   </span>
@@ -108,13 +108,13 @@ const CropsTable = ({ onCropInfo, data }) => {
                 <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left capitalize">
                   {item?.crop_name}
                 </td>
-                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
+                <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
                   {item?.target} <sup>hec</sup>
                 </td>
-                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
+                <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
                   1.5 <sup>hec</sup>
                 </td>
-                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
+                <td className="px-2 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
                   <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
                     90%
                   </span>
@@ -123,27 +123,25 @@ const CropsTable = ({ onCropInfo, data }) => {
                 <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
                   {item?.createAt}
                 </td>
-                <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
+                <td className="px-2 py-2 whitespace-nowrap text-center text-sm font-medium">
                   <button
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block cursor-pointer"
+                    className="text-gray-600 hover:text-blue-900 p-1 inline-block cursor-pointer"
                     onClick={() => {
                       onCropInfo(item);
                     }}
                   >
                     <FaEye className="text-[16px]" />
                   </button>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
+                  <button
+                    className="text-green-600 hover:text-green-900 p-1 inline-block"
                   >
                     <FaPenToSquare className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
+                  </button>
+                  <button
+                    className="text-red-600 hover:text-red-900 p-1 inline-block"
                   >
-                    <MdDelete className="text-[18px]" />
-                  </a>
+                    <MdDelete className="text-[16px]" />
+                  </button>
                 </td>
               </tr>
             ))}
