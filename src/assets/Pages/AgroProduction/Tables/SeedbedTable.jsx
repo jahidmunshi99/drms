@@ -3,8 +3,19 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
 const SeedbedTable = ({ onCropInfo, data }) => {
-  const seedbedData = data.filter((item) => item.category === "seedbed");
-  console.log(seedbedData);
+const seedbedData = data.filter((item) => item.category === "seedbed");
+const seedbedTarget = seedbedData.reduce(
+  (total, item) =>
+    total +
+    item.varieties.reduce(
+      (subTotal, variety) => subTotal + variety.target,
+      0
+    ),
+  0
+);
+
+console.log(seedbedTarget);
+  console.log(seedbedTarget);
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4">
       {/* Table Header */}
@@ -95,7 +106,7 @@ const SeedbedTable = ({ onCropInfo, data }) => {
                     <div className="font-medium">{item?.f_year}</div>
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                    <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md">
+                    <span className="px-3 py-1 text-xs font-medium bg-green-200 rounded-md capitalize">
                       {item?.crop_session}
                     </span>
                   </td>
@@ -103,7 +114,7 @@ const SeedbedTable = ({ onCropInfo, data }) => {
                     {item?.crop_name}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
-                    {item?.target} <sup>hec</sup>
+                    {seedbedTarget} <sup>hec</sup>
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
                     {item?.target}{" "}
