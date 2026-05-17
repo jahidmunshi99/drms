@@ -1,33 +1,124 @@
 import Topbar from "../../components/Topbar";
-import Icon from "../../utils/Icons_ulits";
 const Overview = () => {
+  const data = [
+    {
+      id: "1",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "sadar",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "2",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "bauphal",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "3",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "golachipa",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "4",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "kolapara",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "5",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "dashmina",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "6",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "mirjagonj",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "7",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "dumki",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "rangabali",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+  ];
+
+  const basicInfo = data.filter(
+    (item) =>
+      item?.divisionId === "barisal" && item?.districtId === "patuakhali",
+  );
+
+  const info = basicInfo.map((item) => item);
+
+  console.log(info);
   return (
     <div>
       {/* Top Header */}
       <Topbar />
-      {/* <section className="bg-white px-4 py-2 rounded-lg shadow-sm mb-4">
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-slate-600">
-            <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
-              <option value="">উপজেলা নির্বাচন করুন</option>
-              <option value="">পটুয়াখালী সদর</option>
-              <option value="">বাউফল</option>
-              <option value="">গলাচিপা</option>
-              <option value="">কলাপাড়া</option>
-              <option value="">দশমিনা</option>
-              <option value="">মির্জাগঞ্জ</option>
-            </select>
-          </div>
-          <div className="flex items-center gap-2">
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-50 cursor-pointer">
-              Export CSV
-            </button>
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-50 cursor-pointer">
-              <Icon.print className="text-xl" />
-            </button>
-          </div>
-        </div>
-      </section> */}
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
@@ -35,29 +126,44 @@ const Overview = () => {
             জেলার তথ্য
           </h3>
           <div className="mt-4 space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-600">উপজেলা</span>
-              <span>৮টি</span>
+            <div className="flex justify-between text-sm capitalize">
+              <span className="text-slate-600">upazila</span>
+              <span>{basicInfo.length}</span>
+            </div>
+            <div className="flex justify-between text-sm capitalize">
+              <span className="text-slate-600">union</span>
+              <span>
+                {basicInfo.reduce((sum, item) => sum + item.number_of_union, 0)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm capitalize">
+              <span className=" text-slate-600">block</span>
+              <span>
+                {basicInfo.reduce((sum, item) => sum + item.number_of_block, 0)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm capitalize">
+              <span className=" text-slate-600">population</span>
+              <span>
+                {basicInfo.reduce((sum, item) => sum + item.population, 0)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm capitalize">
+              <span className=" text-slate-600">land area</span>
+              <span>
+                {" "}
+                {basicInfo.reduce((sum, item) => sum + item.land_area, 0)} k.m
+              </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">ইউনিয়ন</span>
-              <span>৩২টি</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">ব্লক</span>
-              <span>৯০টি</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">জনসংখ্যা</span>
-              <span>২০০০৮০ জন</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">আয়তন</span>
-              <span>৩৫০০০ বর্গ কি.মি</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">কৃষক পরিবার</span>
-              <span>১২৫০০ জন</span>
+              <span className=" text-slate-600">Farmer Families</span>
+              <span>
+                {" "}
+                {basicInfo.reduce(
+                  (sum, item) => sum + item.family_of_farmers,
+                  0,
+                )}
+              </span>
             </div>
           </div>
         </div>
@@ -161,159 +267,6 @@ const Overview = () => {
           </div>
         </div>
       </section>
-      {/* <!-- Upozila Wise Details Content Section --> */}
-      <section className="mt-5 mb-1 bg-white px-5 py-3 rounded-lg shadow-sm">
-        <div className="flex items-center justify-between">
-          {/* Left Side Title */}
-          <h3 className="font-semibold border-b border-gray-300">
-            উপজেলা ভিত্তিক বিবরণ
-          </h3>
-
-          {/* Right Side Buttons (hidden on small screens) */}
-          <div className="flex items-center space-x-3 hidden sm:flex">
-            <div className="flex items-center gap-2">
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                Export CSV
-              </button>
-              <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-                <Icon.print className="text-xl" />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* Close flex container */}
-      </section>
-
-      <div className="bg-white shadow-md rounded-lg px-6 py-4">
-        <div className="flex justify-between items-center mb-4 flex-wrap">
-          <div className="flex items-center space-x-3 text-sm mb-3 md:mb-0">
-            <span>Show</span>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>8</option>
-            </select>
-            <select className="border border-gray-300 rounded-md py-1 px-2">
-              <option>উপজেলা</option>
-              <option>পটুয়াখালী সদর</option>
-              <option>বাউফল</option>
-              <option>গলাচিপা</option>
-              <option>কলাপাড়া</option>
-              <option>দশমিনা</option>
-              <option>মির্জাগঞ্জ</option>
-              <option>দুমকী</option>
-              <option>রাঙ্গাবালী</option>
-            </select>
-            <div className="flex space-x-2 flex-wrap mt-2 sm:mt-0">
-              <button className="px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm hover:bg-gray-300 transition-colors cursor-pointer">
-                + Add New
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <span>Search:</span>
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md py-1 px-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        {/* <!-- Table --> */}
-        <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>ক্র. নং</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>উপজেলার নাম</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>যন্ত্রপাতির সংখ্যা</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <div className="flex items-center space-x-1">
-                    <span>উপকারভোগী কৃষক</span>
-                  </div>
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  <span>Actions</span>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  101
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-left">
-                  <div className="font-medium">পটুয়াখালী সদর</div>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-left">
-                  <span>১০ টি</span>
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
-                  ৩০ টি
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap text-center text-sm font-medium">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block"
-                  >
-                    <Icon.view className="text-[16px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-green-600 hover:text-green-900 px-2 py-1 inline-block"
-                  >
-                    <Icon.edit className="text-[15px]" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-red-600 hover:text-red-900 px-2 py-1 inline-block"
-                  >
-                    <Icon.delete className="text-[18px]" />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-4 flex justify-between items-center text-sm text-gray-600 flex-wrap">
-          <span>Showing 0 to 0 of 0 entries</span>
-          <div className="flex space-x-2 mt-2 sm:mt-0">
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Previous
-            </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
