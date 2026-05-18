@@ -105,6 +105,136 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
+    {
+      id: "1",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "sadar",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "2",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "bauphal",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+        {
+      id: "3",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "golachipa",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "4",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "kolapara",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+        {
+      id: "5",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "dashmina",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+        {
+      id: "6",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "mirzagonj",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+        {
+      id: "7",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "dumki",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "rangabali",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+        {
+      id: "8",
+      divisionId: "khulna",
+      districtId: "patuakhali",
+      upazilaId: "rangabali",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+            {
+      id: "8",
+      divisionId: "barisal",
+      districtId: "barguna",
+      upazilaId: "rangabali",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
   ];
 
   const basicInfo = data.filter(
@@ -112,13 +242,12 @@ const Overview = () => {
       item?.divisionId === "barisal" && item?.districtId === "patuakhali",
   );
 
-  const info = basicInfo.map((item) => item);
 
-  console.log(info);
+ 
   return (
     <div>
       {/* Top Header */}
-      <Topbar />
+      <Topbar data={data}/>
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
@@ -173,27 +302,27 @@ const Overview = () => {
           </h3>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">খাদ্য শস্যের চাহিদা</span>
+              <span className="text-slate-600">Food Grain Demand</span>
               <span>১০০০ মে. টন</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">উৎপাদন</span>
+              <span className=" text-slate-600">Food Grain Production</span>
               <span>২০০ মে. টন</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">তেলের চাহিদা</span>
+              <span className=" text-slate-600">Oil Demand</span>
               <span>৩৫০০০ লি.</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">উৎপাদন</span>
+              <span className=" text-slate-600">Oil Production</span>
               <span>৩৫০০০ লি.</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">ডালের চাহিদা</span>
+              <span className=" text-slate-600">Pulse Demand</span>
               <span>৩৫০০০ মে.টন</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">উৎপাদন</span>
+              <span className="text-slate-600">Pulse Production</span>
               <span>৩৫০০০ মে.টন</span>
             </div>
           </div>

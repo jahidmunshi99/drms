@@ -1,47 +1,50 @@
 import { useState } from "react";
-import useFetchDistrict from "../FetchData/useFetchDistrict";
-import useFetchDivision from "../FetchData/useFetchDivision";
+// import useFetchDistrict from "../FetchData/useFetchDistrict";
+// import useFetchDivision from "../FetchData/useFetchDivision";
 import useFetchSession from "../FetchData/useFetchSession";
-import useFetchUpozila from "../FetchData/useFetchUpozila";
+// import useFetchUpozila from "../FetchData/useFetchUpozila";
 import Icon from "../utils/Icons_ulits";
 
-const Topbar = () => {
+const Topbar = ({data}) => {
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedUpozila, setSelectedUpozila] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
 
-  const { divisions } = useFetchDivision();
-  const { districts } = useFetchDistrict(selectedDivision);
-  const { upozila } = useFetchUpozila(selectedDistrict);
+  // const { divisions } = useFetchDivision();
+  // const { districts } = useFetchDistrict(selectedDivision);
+  // const { upozila } = useFetchUpozila(selectedDistrict);
   const { session } = useFetchSession();
-
-  console.log(session);
+  const divisions = [... new Set(data.map((i)=> i.divisionId))]
+  const districts = [... new Set(data.map((i)=> i.districtId))]
+  const upozilas = [... new Set(data.map((i)=> i.upazilaId))]
+console.log(divisions)
+  // console.log(session);
 
   return (
     <section className="bg-white px-4 py-2 rounded-lg shadow-sm mb-4">
       <div className="flex items-center justify-between">
         <div className="text-sm text-slate-600">
           <select
-            className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded"
+            className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize"
             onChange={(e) => setSelectedDivision(e.target.value)}
           >
-            <option value="">বিভাগ</option>
-            {divisions.map((item, index) => (
-              <option key={index} value={item.name}>
-                {item.name_bn}
+            <option value="">division</option>
+            {divisions.map((item) => (
+              <option value={item}>
+                {item}
               </option>
             ))}
           </select>
           {selectedDivision && (
             <select
-              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded mx-3"
+              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded mx-3 capitalize"
               onChange={(e) => setSelectedDistrict(e.target.value)}
             >
-              <option value="">জেলা</option>
+              <option value="">district</option>
               {districts.map((item, index) => (
-                <option key={index} value={item.name}>
-                  {item.name_bn}
+                <option key={index} value={item}>
+                  {item}
                 </option>
               ))}
             </select>
@@ -49,13 +52,13 @@ const Topbar = () => {
 
           {selectedDistrict && (
             <select
-              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded"
+              className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize"
               onChange={(e) => setSelectedUpozila(e.target.value)}
             >
-              <option value="">উপজেলা</option>
-              {upozila.map((item, index) => (
-                <option key={index} value={item.name}>
-                  {item.name_bn}
+              <option value="">upozila</option>
+              {upozilas.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
                 </option>
               ))}
             </select>
