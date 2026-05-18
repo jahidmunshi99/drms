@@ -245,14 +245,14 @@ const Overview = () => {
 
  
   return (
-    <div>
+    <div className="pb-6">
       {/* Top Header */}
       <Topbar data={data}/>
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
-          <h3 className="font-semibold mb-4 border-b border-gray-300">
-            জেলার তথ্য
+          <h3 className="font-semibold mb-4 border-b border-gray-300 capitalize">
+            District Information
           </h3>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-sm capitalize">
@@ -298,42 +298,42 @@ const Overview = () => {
         </div>
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
-            খাদ্য শস্য
+            Food Crops Data
           </h3>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-slate-600">Food Grain Demand</span>
-              <span>১০০০ মে. টন</span>
+              <span>1000<sup>mt</sup></span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Food Grain Production</span>
-              <span>২০০ মে. টন</span>
+              <span>200 <sup>mt</sup></span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Oil Demand</span>
-              <span>৩৫০০০ লি.</span>
+              <span>34500 <sup>lit</sup></span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Oil Production</span>
-              <span>৩৫০০০ লি.</span>
+              <span>2300 <sup>lit</sup></span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Pulse Demand</span>
-              <span>৩৫০০০ মে.টন</span>
+              <span>35000 <sup>mt</sup></span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-slate-600">Pulse Production</span>
-              <span>৩৫০০০ মে.টন</span>
+              <span>35000 <sup>mt</sup></span>
             </div>
           </div>
         </div>
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
-            ফসল সংক্রান্ত তথ্য
+            Crop-related Information
           </h3>
-          <div className="flex justify-between text-sm">
-            <span className=" text-slate-600">শস্য নিবিরতা</span>
-            <span>১১৪%</span>
+          <div className="flex justify-between text-sm capitalize">
+            <span className=" text-slate-600">cropping intensity</span>
+            <span>114%</span>
           </div>
           <div className="mt-2 h-3 bg-slate-100 rounded-full overflow-hidden">
             <div
@@ -345,53 +345,53 @@ const Overview = () => {
             ></div>
           </div>
 
-          <div className="mt-4 space-y-2 text-sm">
+          <div className="mt-4 space-y-2 text-sm ">
             <div className="flex justify-between">
-              <span className=" text-slate-600">এক ফসলি জমি</span>
-              <span>১০০০ হেক্টর</span>
+              <span className=" text-slate-600 capitalize">single-cropped land</span>
+              <span>1000<sup>hec</sup></span> 
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">দুই ফসলি জমি</span>
-              <span>২০০০০ হেক্টর</span>
+              <span className=" text-slate-600 capitalize">double-cropped land</span>
+              <span>20000 <sup>hec</sup></span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">তিন ফসলি জমি</span>
-              <span>৩৫০০০ হেক্টর</span>
+              <span className=" text-slate-600 capitalize">triple-cropped land</span>
+              <span>35000<sup>hec</sup></span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">মোট ফসলি জমি</span>
-              <span>৩৫০০০ হেক্টর</span>
+              <span className="text-slate-600 capitalize">total cropped land</span>
+              <span>35000<sup>hec</sup></span>
             </div>
           </div>
         </div>
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
-            পানি ব্যবস্থাপনা
+            Water Management
           </h3>
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">খাল</span>
-              <span>১২০০ কি.মি</span>
+              <span className=" text-slate-600 capitalize">canal</span>
+              <span>12000<sup>km</sup></span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">খনন যোগ্য</span>
-              <span>১০০০০ কি.মি</span>
+              <span className=" text-slate-600 capitalize">eredgeable</span>
+              <span>10000<sup>km</sup></span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">বেড়ী বাধ</span>
-              <span>৫০টি</span>
+              <span className=" text-slate-600 capitalize">embankment</span>
+              <span>50</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">বেড়ী বাধ দৈর্য্য</span>
-              <span>১৩০০০ কি.মি</span>
+              <span className=" text-slate-600 capitalize">length of embankment</span>
+              <span>13000<sup>km</sup></span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">স্লুইজ গেট</span>
-              <span>১৫০০০ টি</span>
+              <span className=" text-slate-600 capitalize">Sluice Gate</span>
+              <span>15000</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">মেরামত যোগ্য</span>
-              <span>২৩০০ টি</span>
+              <span className="text-slate-600 capitalize">repairable</span>
+              <span>2300</span>
             </div>
           </div>
         </div>
