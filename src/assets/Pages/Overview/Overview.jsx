@@ -1,4 +1,4 @@
-import Topbar from "../../components/Topbar";
+import OverViewFilter from "./OverViewFilter";
 const Overview = () => {
   const data = [
     {
@@ -131,7 +131,7 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-        {
+    {
       id: "3",
       divisionId: "barisal",
       districtId: "patuakhali",
@@ -157,7 +157,7 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-        {
+    {
       id: "5",
       divisionId: "barisal",
       districtId: "patuakhali",
@@ -170,7 +170,7 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-        {
+    {
       id: "6",
       divisionId: "barisal",
       districtId: "patuakhali",
@@ -183,7 +183,7 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-        {
+    {
       id: "7",
       divisionId: "barisal",
       districtId: "patuakhali",
@@ -209,10 +209,10 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-        {
+    {
       id: "8",
-      divisionId: "khulna",
-      districtId: "patuakhali",
+      divisionId: "barisal",
+      districtId: "barguna",
       upazilaId: "rangabali",
       category: "productioninfo",
       population: 2000,
@@ -222,10 +222,23 @@ const Overview = () => {
       family_of_farmers: 12500,
       createAt: "25-june-2026",
     },
-            {
+    {
       id: "8",
-      divisionId: "barisal",
-      districtId: "barguna",
+      divisionId: "khulna",
+      districtId: "jalokhati",
+      upazilaId: "rangabali",
+      category: "productioninfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 12,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "khulna",
+      districtId: "perojpur",
       upazilaId: "rangabali",
       category: "productioninfo",
       population: 2000,
@@ -242,12 +255,10 @@ const Overview = () => {
       item?.divisionId === "barisal" && item?.districtId === "patuakhali",
   );
 
-
- 
   return (
     <div className="pb-6">
       {/* Top Header */}
-      <Topbar data={data}/>
+      <OverViewFilter data={data} />
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
@@ -303,27 +314,39 @@ const Overview = () => {
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-slate-600">Food Grain Demand</span>
-              <span>1000<sup>mt</sup></span>
+              <span>
+                1000<sup>mt</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Food Grain Production</span>
-              <span>200 <sup>mt</sup></span>
+              <span>
+                200 <sup>mt</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Oil Demand</span>
-              <span>34500 <sup>lit</sup></span>
+              <span>
+                34500 <sup>lit</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Oil Production</span>
-              <span>2300 <sup>lit</sup></span>
+              <span>
+                2300 <sup>lit</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Pulse Demand</span>
-              <span>35000 <sup>mt</sup></span>
+              <span>
+                35000 <sup>mt</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-slate-600">Pulse Production</span>
-              <span>35000 <sup>mt</sup></span>
+              <span>
+                35000 <sup>mt</sup>
+              </span>
             </div>
           </div>
         </div>
@@ -347,20 +370,36 @@ const Overview = () => {
 
           <div className="mt-4 space-y-2 text-sm ">
             <div className="flex justify-between">
-              <span className=" text-slate-600 capitalize">single-cropped land</span>
-              <span>1000<sup>hec</sup></span> 
+              <span className=" text-slate-600 capitalize">
+                single-cropped land
+              </span>
+              <span>
+                1000<sup>hec</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">double-cropped land</span>
-              <span>20000 <sup>hec</sup></span>
+              <span className=" text-slate-600 capitalize">
+                double-cropped land
+              </span>
+              <span>
+                20000 <sup>hec</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">triple-cropped land</span>
-              <span>35000<sup>hec</sup></span>
+              <span className=" text-slate-600 capitalize">
+                triple-cropped land
+              </span>
+              <span>
+                35000<sup>hec</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600 capitalize">total cropped land</span>
-              <span>35000<sup>hec</sup></span>
+              <span className="text-slate-600 capitalize">
+                total cropped land
+              </span>
+              <span>
+                35000<sup>hec</sup>
+              </span>
             </div>
           </div>
         </div>
@@ -371,19 +410,27 @@ const Overview = () => {
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600 capitalize">canal</span>
-              <span>12000<sup>km</sup></span>
+              <span>
+                12000<sup>km</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600 capitalize">eredgeable</span>
-              <span>10000<sup>km</sup></span>
+              <span>
+                10000<sup>km</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600 capitalize">embankment</span>
               <span>50</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">length of embankment</span>
-              <span>13000<sup>km</sup></span>
+              <span className=" text-slate-600 capitalize">
+                length of embankment
+              </span>
+              <span>
+                13000<sup>km</sup>
+              </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600 capitalize">Sluice Gate</span>
