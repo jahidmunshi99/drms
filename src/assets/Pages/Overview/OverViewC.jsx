@@ -1,295 +1,10 @@
 import { useMemo, useState } from "react";
+import { basicInfo } from "../../data/data.js";
 import OverViewFilter from "./OverViewFilter";
 
 const Overview = () => {
-  const data = [{
-      id: "1",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "2",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "bauphal",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "3",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "golachipa",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "4",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "kolapara",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "5",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "dashmina",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "6",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "mirjagonj",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "7",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "dumki",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "rangabali",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "khulna",
-      districtId: "perojpur",
-      upazilaId: "sadar",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "khulna",
-      districtId: "bagerhat",
-      upazilaId: "boyra",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "rangabali",
-      category: "basicinfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 1,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "1",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "2",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "bauphal",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "3",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "golachipa",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "4",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "kolapara",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "5",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "dashmina",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "6",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "mirzagonj",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "7",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "dumki",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "rangabali",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "barisal",
-      districtId: "barguna",
-      upazilaId: "rangabali",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "khulna",
-      districtId: "jalokhati",
-      upazilaId: "rangabali",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-    {
-      id: "8",
-      divisionId: "khulna",
-      districtId: "bagerhat",
-      upazilaId: "sadar",
-      category: "productioninfo",
-      population: 2000,
-      land_area: 3500,
-      number_of_union: 12,
-      number_of_block: 36,
-      family_of_farmers: 12500,
-      createAt: "25-june-2026",
-    },
-  ];
-
+  const data = basicInfo;
+  console.log(data);
   /* -------------------------------------------------------------------------- */
   /*                                  STATES                                    */
   /* -------------------------------------------------------------------------- */
@@ -306,6 +21,7 @@ const Overview = () => {
     return data.filter((item) => item.category === "basicinfo");
   }, [data]);
 
+  console.log(basicData);
   /* -------------------------------------------------------------------------- */
   /*                               FILTER OPTIONS                               */
   /* -------------------------------------------------------------------------- */
@@ -377,12 +93,7 @@ const Overview = () => {
 
       return matchDivision && matchDistrict && matchUpazila;
     });
-  }, [
-    basicData,
-    selectedDivision,
-    selectedDistrict,
-    selectedUpazila,
-  ]);
+  }, [basicData, selectedDivision, selectedDistrict, selectedUpazila]);
 
   /* -------------------------------------------------------------------------- */
   /*                             OVERVIEW CALCULATION                           */
@@ -413,12 +124,74 @@ const Overview = () => {
       ),
 
       totalFarmerFamily: filteredData.reduce(
-        (sum, item) => sum + item.family_of_farmers,
+        (sum, item) => sum + item?.family_of_farmers || 0,
+        0,
+      ),
+      totalFoodGrainDemand: filteredData.reduce(
+        (sum, item) => sum + item?.food_grain_demand || 0,
+        0,
+      ),
+      totalFoodGrainProduction: filteredData.reduce(
+        (sum, item) => sum + item?.food_grain_production || 0,
+        0,
+      ),
+      totalOilDemand: filteredData.reduce(
+        (sum, item) => sum + item?.oil_demand || 0,
+        0,
+      ),
+      totalOilProduction: filteredData.reduce(
+        (sum, item) => sum + item?.oil_production || 0,
+        0,
+      ),
+      totalPulseDemand: filteredData.reduce(
+        (sum, item) => sum + item?.pulse_demand || 0,
+        0,
+      ),
+      totalPulseProduction: filteredData.reduce(
+        (sum, item) => sum + item?.pulse_production || 0,
+        0,
+      ),
+      totalSingleCroppedLand: filteredData.reduce(
+        (sum, item) => sum + item?.single_cropped_land || 0,
+        0,
+      ),
+      totalDoubleCroppedLand: filteredData.reduce(
+        (sum, item) => sum + item?.double_cropped_land || 0,
+        0,
+      ),
+      totalTripleCroppedLand: filteredData.reduce(
+        (sum, item) => sum + item?.triple_cropped_land || 0,
+        0,
+      ),
+      totalCroppedLand: filteredData.reduce(
+        (sum, item) => sum + item?.total_cropped_land || 0,
+        0,
+      ),
+      totalCanal: filteredData.reduce((sum, item) => sum + item?.canal || 0, 0),
+      totalEredgeable: filteredData.reduce(
+        (sum, item) => sum + item?.eredgeable || 0,
+        0,
+      ),
+      totalEmbankment: filteredData.reduce(
+        (sum, item) => sum + item?.embankment || 0,
+        0,
+      ),
+      totalLengthOfEmbankment: filteredData.reduce(
+        (sum, item) => sum + item?.length_of_embankment || 0,
+        0,
+      ),
+      totalSluiceGate: filteredData.reduce(
+        (sum, item) => sum + item?.sluice_gate || 0,
+        0,
+      ),
+      totalRepairable: filteredData.reduce(
+        (sum, item) => sum + item?.repairable || 0,
         0,
       ),
     };
   }, [filteredData]);
 
+  console.log(statistics);
   /* -------------------------------------------------------------------------- */
   /*                                FILTER INFO                                 */
   /* -------------------------------------------------------------------------- */
@@ -447,37 +220,22 @@ const Overview = () => {
         {/* District Information */}
         <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
           <h3 className="mb-4 border-b border-gray-200 pb-2 font-semibold capitalize">
-            District Information
+            একনজরে
           </h3>
 
           <div className="space-y-3">
-            <InfoItem
-              label="Upazila"
-              value={statistics.totalUpazila}
-            />
+            <InfoItem label="উপজেলা" value={statistics.totalUpazila} />
+
+            <InfoItem label="ইউনিয়ন" value={statistics.totalUnion} />
+
+            <InfoItem label="ব্লক" value={statistics.totalBlock} />
+
+            <InfoItem label="জনসংখ্যা" value={statistics.totalPopulation} />
+
+            <InfoItem label="আয়তন" value={`${statistics.totalLandArea} km`} />
 
             <InfoItem
-              label="Union"
-              value={statistics.totalUnion}
-            />
-
-            <InfoItem
-              label="Block"
-              value={statistics.totalBlock}
-            />
-
-            <InfoItem
-              label="Population"
-              value={statistics.totalPopulation}
-            />
-
-            <InfoItem
-              label="Land Area"
-              value={`${statistics.totalLandArea} km`}
-            />
-
-            <InfoItem
-              label="Farmer Families"
+              label="কৃষক সংখ্যা"
               value={statistics.totalFarmerFamily}
             />
           </div>
@@ -486,62 +244,38 @@ const Overview = () => {
         {/* Food Crops */}
         <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
           <h3 className="mb-4 border-b border-gray-200 pb-2 font-semibold">
-            Food Crops Data
+            খাদ্যশস্য
           </h3>
 
           <div className="space-y-3">
             <InfoItem
-              label="Food Grain Demand"
-              value={
-                <>
-                  1000 <sup>mt</sup>
-                </>
-              }
+              label="খাদ্যশস্যের চাহিদা"
+              value={`${statistics.totalFoodGrainDemand} mt`}
             />
 
             <InfoItem
-              label="Food Grain Production"
-              value={
-                <>
-                  200 <sup>mt</sup>
-                </>
-              }
+              label="উৎপাদন"
+              value={`${statistics.totalFoodGrainProduction} mt`}
             />
 
             <InfoItem
-              label="Oil Demand"
-              value={
-                <>
-                  34500 <sup>lit</sup>
-                </>
-              }
+              label="তেলের চাহিদা"
+              value={`${statistics.totalOilDemand} mt`}
             />
 
             <InfoItem
-              label="Oil Production"
-              value={
-                <>
-                  2300 <sup>lit</sup>
-                </>
-              }
+              label="তেলের উৎপাদন"
+              value={`${statistics.totalOilProduction} mt`}
             />
 
             <InfoItem
-              label="Pulse Demand"
-              value={
-                <>
-                  35000 <sup>mt</sup>
-                </>
-              }
+              label="ডালের চাহিদা"
+              value={`${statistics.totalPulseDemand} mt`}
             />
 
             <InfoItem
-              label="Pulse Production"
-              value={
-                <>
-                  35000 <sup>mt</sup>
-                </>
-              }
+              label="ডালের উৎপাদন"
+              value={`${statistics.totalPulseDemand} mt`}
             />
           </div>
         </div>
@@ -549,10 +283,10 @@ const Overview = () => {
 
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
-            Crop-related Information
+            ফসলি জমি
           </h3>
           <div className="flex justify-between text-sm capitalize">
-            <span className=" text-slate-600">cropping intensity</span>
+            <span className=" text-slate-600">শস্য নিবিরতা</span>
             <span>114%</span>
           </div>
           <div className="mt-2 h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -567,76 +301,52 @@ const Overview = () => {
 
           <div className="mt-4 space-y-2 text-sm ">
             <div className="flex justify-between">
-              <span className=" text-slate-600 capitalize">
-                single-cropped land
-              </span>
-              <span>
-                1000<sup>hec</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">এক ফসলি জমি</span>
+              <span>{`${statistics.totalSingleCroppedLand} hec`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">
-                double-cropped land
-              </span>
-              <span>
-                20000 <sup>hec</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">দুই ফসলি জমি</span>
+              <span>{`${statistics.totalDoubleCroppedLand} hec`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">
-                triple-cropped land
-              </span>
-              <span>
-                35000<sup>hec</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">তিন ফসলি জমি</span>
+              <span>{`${statistics.totalTripleCroppedLand} hec`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600 capitalize">
-                total cropped land
-              </span>
-              <span>
-                35000<sup>hec</sup>
-              </span>
+              <span className="text-slate-600 capitalize">মোট ফসলি জমি</span>
+              <span>{`${statistics.totalCroppedLand} hec`}</span>
             </div>
           </div>
         </div>
         {/* Water Management Information */}
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
-            Water Management
+            পানি ব্যবস্থাপনা
           </h3>
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">canal</span>
-              <span>
-                12000<sup>km</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">খাল</span>
+              <span>{`${statistics.totalCanal} km`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">eredgeable</span>
-              <span>
-                10000<sup>km</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">খননযোগ্য</span>
+              <span>{`${statistics.totalEredgeable} km`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">embankment</span>
-              <span>50</span>
+              <span className=" text-slate-600 capitalize">বাধ</span>
+              <span>{`${statistics.totalEmbankment} km`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">
-                length of embankment
-              </span>
-              <span>
-                13000<sup>km</sup>
-              </span>
+              <span className=" text-slate-600 capitalize">বাধের দৈর্য্য</span>
+              <span>{`${statistics.totalLengthOfEmbankment} km`}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className=" text-slate-600 capitalize">Sluice Gate</span>
-              <span>15000</span>
+              <span className=" text-slate-600 capitalize">স্লইজ গেট</span>
+              <span>{statistics.totalSluiceGate}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600 capitalize">repairable</span>
-              <span>2300</span>
+              <span className="text-slate-600 capitalize">মেরামতযোগ্য</span>
+              <span>{statistics.totalRepairable}</span>
             </div>
           </div>
         </div>
