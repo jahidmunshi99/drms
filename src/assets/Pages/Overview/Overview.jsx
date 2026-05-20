@@ -1,3 +1,4 @@
+import { useState } from "react";
 import OverViewFilter from "./OverViewFilter";
 const Overview = () => {
   const data = [
@@ -9,7 +10,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -22,7 +23,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -35,7 +36,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -48,7 +49,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -61,7 +62,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -74,7 +75,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -87,7 +88,7 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -100,7 +101,46 @@ const Overview = () => {
       category: "basicinfo",
       population: 2000,
       land_area: 3500,
-      number_of_union: 12,
+      number_of_union: 1,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "khulna",
+      districtId: "perojpur",
+      upazilaId: "sadar",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 1,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "khulna",
+      districtId: "bagerhat",
+      upazilaId: "boyra",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 1,
+      number_of_block: 36,
+      family_of_farmers: 12500,
+      createAt: "25-june-2026",
+    },
+    {
+      id: "8",
+      divisionId: "barisal",
+      districtId: "patuakhali",
+      upazilaId: "rangabali",
+      category: "basicinfo",
+      population: 2000,
+      land_area: 3500,
+      number_of_union: 1,
       number_of_block: 36,
       family_of_farmers: 12500,
       createAt: "25-june-2026",
@@ -238,8 +278,8 @@ const Overview = () => {
     {
       id: "8",
       divisionId: "khulna",
-      districtId: "perojpur",
-      upazilaId: "rangabali",
+      districtId: "bagerhat",
+      upazilaId: "sadar",
       category: "productioninfo",
       population: 2000,
       land_area: 3500,
@@ -250,15 +290,57 @@ const Overview = () => {
     },
   ];
 
-  const basicInfo = data.filter(
+  
+  const [selectedDivision, setSelectedDivision] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedUpozila, setSelectedUpozila] = useState("");
+  const [districtList, setDistrictList] = useState("");
+  
+  const [allData, setAllData] = useState(data.filter((basic)=> basic.category === "basicinfo"));
+
+  const divisions = [...new Set(allData.map((i) => i.divisionId))];
+
+
+
+  const handleDivision = (divis) => {
+    const districtList = allData.filter((item) => item.divisionId === divis);
+    setSelectedDivision(districtList);
+    setDistrictList([
+      ...new Set(districtList.map((item) => item.districtId)),
+    ])
+    console.log(districtList)
+  };
+
+  const handleDistrict = (dist) => {
+      const districtList = allData.filter((item) => item.districtId === dist);
+      setSelectedDistrict(dist);
+      setSelectedUpozila([...new Set(districtList.map((upz) => upz.upazilaId))]);
+      setAllData(districtList)
+      console.log(dist)
+  };
+
+  const handleUpazila = (upz) => {
+    const upazilaList = allData.filter((item) => item.upazilaId === upz);
+    setAllData(upazilaList);
+    console.log(upazilaList)
+  };
+
+const filterInfo = {
+ divisions, selectedDivision, selectedDistrict, selectedUpozila, handleDivision, handleDistrict, handleUpazila, districtList
+}
+
+  const basicInfo = allData.filter(
     (item) =>
-      item?.divisionId === "barisal" && item?.districtId === "patuakhali",
+      item?.districtId ===  selectedDistrict
   );
+
+
+  console.log(basicInfo)
 
   return (
     <div className="pb-6">
       {/* Top Header */}
-      <OverViewFilter data={data} />
+      <OverViewFilter filterInfo={filterInfo}/>
       {/* <!-- Content Section --> */}
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
         <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
@@ -279,27 +361,27 @@ const Overview = () => {
             <div className="flex justify-between text-sm capitalize">
               <span className=" text-slate-600">block</span>
               <span>
-                {basicInfo.reduce((sum, item) => sum + item.number_of_block, 0)}
+                {allData.reduce((sum, item) => sum + item.number_of_block, 0)}
               </span>
             </div>
             <div className="flex justify-between text-sm capitalize">
               <span className=" text-slate-600">population</span>
               <span>
-                {basicInfo.reduce((sum, item) => sum + item.population, 0)}
+                {allData.reduce((sum, item) => sum + item.population, 0)}
               </span>
             </div>
             <div className="flex justify-between text-sm capitalize">
               <span className=" text-slate-600">land area</span>
               <span>
                 {" "}
-                {basicInfo.reduce((sum, item) => sum + item.land_area, 0)} k.m
+                {allData.reduce((sum, item) => sum + item.land_area, 0)} k.m
               </span>
             </div>
             <div className="flex justify-between text-sm">
               <span className=" text-slate-600">Farmer Families</span>
               <span>
                 {" "}
-                {basicInfo.reduce(
+                {allData.reduce(
                   (sum, item) => sum + item.family_of_farmers,
                   0,
                 )}
