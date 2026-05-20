@@ -9,10 +9,11 @@ import AgroProduction from "../Pages/AgroProduction/AgroProduction";
 import FarmersGroup from "../Pages/FarmersGroup/FarmersGroup";
 import FertilizerAndPesticide from "../Pages/FertilizerAndPesticide/FertilizerAndPesticide";
 import Home from "../Pages/Home/Home";
-import Overview from "../Pages/Overview/Overview";
+import OverViewC from "../Pages/Overview/OverViewC";
 import Stuffs from "../Pages/Stuffs/Stuffs";
 import Trainings from "../Pages/Trainings/Trainings";
 import Weather from "../Pages/Weather/Weather";
+import Overview from "../Pages/Overview/OverViewC";
 const AppRoute = () => {
   return (
     <Routes>

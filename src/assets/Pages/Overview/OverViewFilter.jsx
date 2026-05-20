@@ -2,7 +2,17 @@
 import Icon from "../../utils/Icons_ulits";
 
 const OverViewFilter = ({ filterInfo}) => {
- const { divisions, selectedDivision, selectedDistrict, selectedUpozila, handleDivision, handleDistrict, handleUpazila, districtList}= filterInfo
+ const { divisions,
+    districtList,
+    upazilaList,
+
+    selectedDivision,
+    selectedDistrict,
+    selectedUpazila,
+
+    handleDivision,
+    handleDistrict,
+    handleUpazila,}= filterInfo
 
 
   return (
@@ -36,13 +46,13 @@ const OverViewFilter = ({ filterInfo}) => {
             </select>
           )}
 
-          {selectedUpozila && (
+          {selectedDistrict && (
             <select
               className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize"
               onChange={(e) => handleUpazila(e.target.value)}
             >
               <option value="">upozila</option>
-              {selectedUpozila.map((item, index) => (
+              {upazilaList.map((item, index) => (
                 <option key={index} value={item}>
                   {item}
                 </option>

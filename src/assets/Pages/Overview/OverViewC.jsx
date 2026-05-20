@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import OverViewFilter from "./OverViewFilter";
+
 const Overview = () => {
-  const data = [
-    {
+  const data = [{
       id: "1",
       divisionId: "barisal",
       districtId: "patuakhali",
@@ -290,148 +290,263 @@ const Overview = () => {
     },
   ];
 
-  
+  /* -------------------------------------------------------------------------- */
+  /*                                  STATES                                    */
+  /* -------------------------------------------------------------------------- */
+
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
-  const [selectedUpozila, setSelectedUpozila] = useState("");
-  const [districtList, setDistrictList] = useState("");
-  
-  const [allData, setAllData] = useState(data.filter((basic)=> basic.category === "basicinfo"));
+  const [selectedUpazila, setSelectedUpazila] = useState("");
 
-  const divisions = [...new Set(allData.map((i) => i.divisionId))];
+  /* -------------------------------------------------------------------------- */
+  /*                              FILTERED SOURCE                               */
+  /* -------------------------------------------------------------------------- */
 
+  const basicData = useMemo(() => {
+    return data.filter((item) => item.category === "basicinfo");
+  }, [data]);
 
+  /* -------------------------------------------------------------------------- */
+  /*                               FILTER OPTIONS                               */
+  /* -------------------------------------------------------------------------- */
 
-  const handleDivision = (divis) => {
-    const districtList = allData.filter((item) => item.divisionId === divis);
-    setSelectedDivision(districtList);
-    setDistrictList([
-      ...new Set(districtList.map((item) => item.districtId)),
-    ])
-    console.log(districtList)
+  const divisions = useMemo(() => {
+    return [...new Set(basicData.map((item) => item.divisionId))];
+  }, [basicData]);
+
+  const districtList = useMemo(() => {
+    if (!selectedDivision) return [];
+
+    return [
+      ...new Set(
+        basicData
+          .filter((item) => item.divisionId === selectedDivision)
+          .map((item) => item.districtId),
+      ),
+    ];
+  }, [basicData, selectedDivision]);
+
+  const upazilaList = useMemo(() => {
+    if (!selectedDistrict) return [];
+
+    return [
+      ...new Set(
+        basicData
+          .filter((item) => item.districtId === selectedDistrict)
+          .map((item) => item.upazilaId),
+      ),
+    ];
+  }, [basicData, selectedDistrict]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                               FILTER HANDLER                               */
+  /* -------------------------------------------------------------------------- */
+
+  const handleDivision = (division) => {
+    setSelectedDivision(division);
+    setSelectedDistrict("");
+    setSelectedUpazila("");
   };
 
-  const handleDistrict = (dist) => {
-      const districtList = allData.filter((item) => item.districtId === dist);
-      setSelectedDistrict(dist);
-      setSelectedUpozila([...new Set(districtList.map((upz) => upz.upazilaId))]);
-      setAllData(districtList)
-      console.log(dist)
+  const handleDistrict = (district) => {
+    setSelectedDistrict(district);
+    setSelectedUpazila("");
   };
 
-  const handleUpazila = (upz) => {
-    const upazilaList = allData.filter((item) => item.upazilaId === upz);
-    setAllData(upazilaList);
-    console.log(upazilaList)
+  const handleUpazila = (upazila) => {
+    setSelectedUpazila(upazila);
   };
 
-const filterInfo = {
- divisions, selectedDivision, selectedDistrict, selectedUpozila, handleDivision, handleDistrict, handleUpazila, districtList
-}
+  /* -------------------------------------------------------------------------- */
+  /*                               FILTERED DATA                                */
+  /* -------------------------------------------------------------------------- */
 
-  const basicInfo = allData.filter(
-    (item) =>
-      item?.districtId ===  selectedDistrict
-  );
+  const filteredData = useMemo(() => {
+    return basicData.filter((item) => {
+      const matchDivision = selectedDivision
+        ? item.divisionId === selectedDivision
+        : true;
 
+      const matchDistrict = selectedDistrict
+        ? item.districtId === selectedDistrict
+        : true;
 
+      const matchUpazila = selectedUpazila
+        ? item.upazilaId === selectedUpazila
+        : true;
 
+      return matchDivision && matchDistrict && matchUpazila;
+    });
+  }, [
+    basicData,
+    selectedDivision,
+    selectedDistrict,
+    selectedUpazila,
+  ]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                             OVERVIEW CALCULATION                           */
+  /* -------------------------------------------------------------------------- */
+
+  const statistics = useMemo(() => {
+    return {
+      totalUpazila: filteredData.length,
+
+      totalUnion: filteredData.reduce(
+        (sum, item) => sum + item.number_of_union,
+        0,
+      ),
+
+      totalBlock: filteredData.reduce(
+        (sum, item) => sum + item.number_of_block,
+        0,
+      ),
+
+      totalPopulation: filteredData.reduce(
+        (sum, item) => sum + item.population,
+        0,
+      ),
+
+      totalLandArea: filteredData.reduce(
+        (sum, item) => sum + item.land_area,
+        0,
+      ),
+
+      totalFarmerFamily: filteredData.reduce(
+        (sum, item) => sum + item.family_of_farmers,
+        0,
+      ),
+    };
+  }, [filteredData]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                FILTER INFO                                 */
+  /* -------------------------------------------------------------------------- */
+
+  const filterInfo = {
+    divisions,
+    districtList,
+    upazilaList,
+
+    selectedDivision,
+    selectedDistrict,
+    selectedUpazila,
+
+    handleDivision,
+    handleDistrict,
+    handleUpazila,
+  };
 
   return (
     <div className="pb-6">
-      {/* Top Header */}
-      <OverViewFilter filterInfo={filterInfo}/>
-      {/* <!-- Content Section --> */}
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5">
-        <div className=" bg-white p-5 rounded-lg shadow-sm border-gray-300">
-          <h3 className="font-semibold mb-4 border-b border-gray-300 capitalize">
+      {/* Filter */}
+      <OverViewFilter filterInfo={filterInfo} />
+
+      {/* Content */}
+      <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-2">
+        {/* District Information */}
+        <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 className="mb-4 border-b border-gray-200 pb-2 font-semibold capitalize">
             District Information
           </h3>
-          <div className="mt-4 space-y-2">
-            <div className="flex justify-between text-sm capitalize">
-              <span className="text-slate-600">upazila</span>
-              <span>{basicInfo.length}</span>
-            </div>
-            <div className="flex justify-between text-sm capitalize">
-              <span className="text-slate-600">union</span>
-              <span>
-                {basicInfo.reduce((sum, item) => sum + item.number_of_union, 0)}
-              </span>
-            </div>
-            <div className="flex justify-between text-sm capitalize">
-              <span className=" text-slate-600">block</span>
-              <span>
-                {basicInfo.reduce((sum, item) => sum + item.number_of_block, 0)}
-              </span>
-            </div>
-            <div className="flex justify-between text-sm capitalize">
-              <span className=" text-slate-600">population</span>
-              <span>
-                {basicInfo.reduce((sum, item) => sum + item.population, 0)}
-              </span>
-            </div>
-            <div className="flex justify-between text-sm capitalize">
-              <span className=" text-slate-600">land area</span>
-              <span>
-                {" "}
-                {basicInfo.reduce((sum, item) => sum + item.land_area, 0)} k.m
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">Farmer Families</span>
-              <span>
-                {" "}
-                {basicInfo.reduce(
-                  (sum, item) => sum + item.family_of_farmers,
-                  0,
-                )}
-              </span>
-            </div>
+
+          <div className="space-y-3">
+            <InfoItem
+              label="Upazila"
+              value={statistics.totalUpazila}
+            />
+
+            <InfoItem
+              label="Union"
+              value={statistics.totalUnion}
+            />
+
+            <InfoItem
+              label="Block"
+              value={statistics.totalBlock}
+            />
+
+            <InfoItem
+              label="Population"
+              value={statistics.totalPopulation}
+            />
+
+            <InfoItem
+              label="Land Area"
+              value={`${statistics.totalLandArea} km`}
+            />
+
+            <InfoItem
+              label="Farmer Families"
+              value={statistics.totalFarmerFamily}
+            />
           </div>
         </div>
-        <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
-          <h3 className="font-semibold mb-4 border-b border-gray-300">
+
+        {/* Food Crops */}
+        <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 className="mb-4 border-b border-gray-200 pb-2 font-semibold">
             Food Crops Data
           </h3>
-          <div className="mt-4 space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-600">Food Grain Demand</span>
-              <span>
-                1000<sup>mt</sup>
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">Food Grain Production</span>
-              <span>
-                200 <sup>mt</sup>
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">Oil Demand</span>
-              <span>
-                34500 <sup>lit</sup>
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">Oil Production</span>
-              <span>
-                2300 <sup>lit</sup>
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className=" text-slate-600">Pulse Demand</span>
-              <span>
-                35000 <sup>mt</sup>
-              </span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-600">Pulse Production</span>
-              <span>
-                35000 <sup>mt</sup>
-              </span>
-            </div>
+
+          <div className="space-y-3">
+            <InfoItem
+              label="Food Grain Demand"
+              value={
+                <>
+                  1000 <sup>mt</sup>
+                </>
+              }
+            />
+
+            <InfoItem
+              label="Food Grain Production"
+              value={
+                <>
+                  200 <sup>mt</sup>
+                </>
+              }
+            />
+
+            <InfoItem
+              label="Oil Demand"
+              value={
+                <>
+                  34500 <sup>lit</sup>
+                </>
+              }
+            />
+
+            <InfoItem
+              label="Oil Production"
+              value={
+                <>
+                  2300 <sup>lit</sup>
+                </>
+              }
+            />
+
+            <InfoItem
+              label="Pulse Demand"
+              value={
+                <>
+                  35000 <sup>mt</sup>
+                </>
+              }
+            />
+
+            <InfoItem
+              label="Pulse Production"
+              value={
+                <>
+                  35000 <sup>mt</sup>
+                </>
+              }
+            />
           </div>
         </div>
+        {/* Crop-related Information */}
+
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
             Crop-related Information
@@ -485,6 +600,7 @@ const filterInfo = {
             </div>
           </div>
         </div>
+        {/* Water Management Information */}
         <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-300">
           <h3 className="font-semibold mb-4 border-b border-gray-300">
             Water Management
@@ -525,6 +641,19 @@ const filterInfo = {
           </div>
         </div>
       </section>
+    </div>
+  );
+};
+
+/* -------------------------------------------------------------------------- */
+/*                               REUSABLE ITEM                                */
+/* -------------------------------------------------------------------------- */
+
+const InfoItem = ({ label, value }) => {
+  return (
+    <div className="flex items-center justify-between text-sm">
+      <span className="capitalize text-slate-600">{label}</span>
+      <span className="font-medium text-slate-800">{value}</span>
     </div>
   );
 };
