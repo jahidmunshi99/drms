@@ -8,10 +8,14 @@ const FilterHeader = ({filterInfo}) => {
     division, 
     districtList, 
     upazilaList, 
-
+    sessionList,
+    fYearList,
     handleDivision,
     handleDistrict,
-    handleUpazila} = filterInfo
+    handleUpazila,
+    handleSession,
+    handleFYear,
+} = filterInfo
 
     const f_years = yearsInfo
     const sessions = sessionInfo
@@ -25,18 +29,18 @@ const FilterHeader = ({filterInfo}) => {
             <div className="flex items-center justify-between">
               <div className="flex gap-3">
                 <div className="text-sm text-slate-600">
-                  <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize">
+                  <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize" onChange={(e)=>handleFYear(e.target.value)}>
                     <option value="">Years</option>
-                    {f_years.map((fyear)=>                    
-                    <option key={fyear.id} value={fyear.fyearId}>{fyear.fyearId}</option>
+                    {fYearList.map((fyear)=>                    
+                    <option key={fyear} value={fyear}>{fyear}</option>
                     )}
                   </select>
                 </div>
                 <div className="text-sm text-slate-600">
-                  <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize">
+                  <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded capitalize" onChange={(e)=>handleSession(e.target.value)}>
                     <option value="">session</option>
-                    {sessions.map((session)=>                     
-                    <option key={session.id} value={session.sessionId}>{session.sessionId}</option>
+                    {sessionList.map((session)=>                     
+                    <option key={session} value={session}>{session}</option>
                     )}
                   </select>
                 </div>

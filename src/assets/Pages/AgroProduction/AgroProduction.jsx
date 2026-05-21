@@ -26,8 +26,10 @@ const AgroProduction = () => {
   const [selectedDivision, setSelectedDivision] = useState("")
   const [selectedDistrict, setSelectedDistrict] = useState("")
   const [selectedUpazila, setSelectedUpazila] = useState("")
+  const [selectedSession, setSelectedSession] = useState("")
+  const [selectedFYear, setSelectedFYear] = useState("")
 
-console.log("This is from Selected District:" + selectedDistrict)
+
   /* -------------------------------------------------------------------------- */
   /*                               FILTER OPTIONS                               */
   /* -------------------------------------------------------------------------- */
@@ -47,9 +49,20 @@ console.log("This is from Selected District:" + selectedDistrict)
   }, [data, selectedDistrict])
 
 
+  const sessionList = useMemo(()=>{
+    return [...new Set(data.map((sess)=> sess?.crop_session))]
+  },[data])
 
+  const fYearList = useMemo(()=>{
+        return [...new Set(data.map((fyear)=> fyear?.f_year))]
+  },[data])
+
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                               FILTER HANDLER                               */
+  /* -------------------------------------------------------------------------- */
   const handleDivision = (item) => {
-    console.log(item)
     setSelectedDivision(item);
     setSelectedDistrict("");
     setSelectedUpazila("");
@@ -64,15 +77,27 @@ console.log("This is from Selected District:" + selectedDistrict)
     setSelectedUpazila(upazila)
   }
 
+  const handleSession = (session)=>{
+    setSelectedSession(session)
+  }
+
+  const handleFYear = (fyear)=>{
+    setSelectedFYear(fyear)
+  }
+
 
    const filterInfo = {
     division, 
     districtList, 
     upazilaList, 
+    sessionList,
+    fYearList,
 
     handleDivision,
     handleDistrict,
-    handleUpazila
+    handleUpazila,
+    handleSession,
+    handleFYear
    }
 
   const handleClose = () => {
