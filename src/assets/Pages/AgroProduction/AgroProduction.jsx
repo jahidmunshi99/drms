@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { IoPrintOutline } from "react-icons/io5";
 import EditFormModal from "./EditFormModal";
 import HarvestForm from "./Forms/HarvestForm";
@@ -7,8 +7,14 @@ import SowingForm from "./Forms/SowingForm";
 import CropsTable from "./Tables/CropsTable";
 import HarvestTable from "./Tables/HarvestTable";
 import SeedbedTable from "./Tables/SeedbedTable";
+import {cultivationData, yearsInfo, sessionInfo} from "../../data/data.js"
+import FilterHeader from "./FilterHeader.jsx";
+
 
 const AgroProduction = () => {
+  const data = cultivationData
+  const years = yearsInfo
+  const sessions = sessionInfo
   const [show, setShow] = useState(false);
   const [showHarvest, setShowHarvest] = useState(false);
   const [showSeedbed, setShowSeedbed] = useState(false);
@@ -16,289 +22,58 @@ const AgroProduction = () => {
   const [cropInfo, setCropInfo] = useState(null);
   const [seedbedInfo, setSeedbedInfo] = useState(null);
   const [harvestInfo, setHarvesInfo] = useState(null);
-  const data = [
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_name: "Wheat",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI Gom-26",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "2",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_name: "masterd",
-      crop_type: "oilseed",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI Sarisha-6",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-7",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-8",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-9",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-14",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-15",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "3",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "rice",
-      crop_name: "boro",
-      category: "sowing",
-      target: 600,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BRRI dhan28",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan114",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Others",
-          category_of: "local",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan99",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan97",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI Hybrid dhan9",
-          category_of: "Hybrid",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "4",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "oilseed",
-      crop_name: "sunflowar",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI-16",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "oilseed",
-      crop_name: "sunflowar",
-      category: "harvest",
-      achievement: 245,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "Hysun-33",
-          cultivated: 55,
-          harvest: 50,
-          production_per_hector: 1.3,
-          production: 65,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Hysun-36",
-          cultivated: 55,
-          harvest: 25,
-          production_per_hector: 1.3,
-          production: 130,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Surjamukhi-2",
-          cultivated: 30,
-          harvest: 29,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Surjamukhi-3",
-          cultivated: 55,
-          harvest: 50,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Kironi (DS-1)",
-          cultivated: 30,
-          harvest: 27,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "DS 275",
-          cultivated: 20,
-          harvest: 18,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "rice",
-      crop_name: "boro",
-      category: "seedbed",
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "hyv",
-          target: 600,
-          achievement: 450,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "local",
-          target: 35,
-          achievement: 30,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "hybrid",
-          category_of: "Hybrid",
-          target: 50,
-          achievement: 25,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-  ];
+
+  const [selectedDivision, setSelectedDivision] = useState("")
+  const [selectedDistrict, setSelectedDistrict] = useState("")
+  const [selectedUpazila, setSelectedUpazila] = useState("")
+
+console.log("This is from Selected District:" + selectedDistrict)
+  /* -------------------------------------------------------------------------- */
+  /*                               FILTER OPTIONS                               */
+  /* -------------------------------------------------------------------------- */
+
+  const division = useMemo(()=>{
+    return [...new Set(data.map((item)=> item?.divisionId))]
+    }, [data])
+  
+  const districtList = useMemo(()=>{
+    if(!selectedDivision) return []
+    return [...new Set(data.filter((divinfo)=>divinfo?.divisionId === selectedDivision).map((item)=> item?.districtId))]
+  }, [data, selectedDivision])
+
+  const upazilaList = useMemo(()=> {
+    if(!selectedDistrict) return []
+    return [...new Set(data.filter((dists)=> dists?.districtId === selectedDistrict).map((item)=> item?.upazilaId))]
+  }, [data, selectedDistrict])
+
+
+
+  const handleDivision = (item) => {
+    console.log(item)
+    setSelectedDivision(item);
+    setSelectedDistrict("");
+    setSelectedUpazila("");
+  };
+
+  const handleDistrict = (district)=>{
+    setSelectedDistrict(district);
+    setSelectedUpazila("")
+  }
+
+    const handleUpazila = (upazila)=>{
+    setSelectedUpazila(upazila)
+  }
+
+
+   const filterInfo = {
+    division, 
+    districtList, 
+    upazilaList, 
+
+    handleDivision,
+    handleDistrict,
+    handleUpazila
+   }
 
   const handleClose = () => {
     setShowEdit(!showEdit);
@@ -350,50 +125,7 @@ const AgroProduction = () => {
         />
       )}
       {/* Top Header */}
-      <section className="bg-white px-4 py-2 mb-4 rounded-lg shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex gap-3">
-            <div className="text-sm text-slate-600">
-              <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
-                <option value="">অর্থবছর</option>
-                <option value="">২০২৫-২৬</option>
-                <option value="">২০২৪-২৫</option>
-                <option value="">২০২৩-২৪</option>
-                <option value="">২০২২-২৩</option>
-                <option value="">২০২১-২২</option>
-              </select>
-            </div>
-            <div className="text-sm text-slate-600">
-              <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
-                <option value="">মৌসুম</option>
-                <option value="">রবি</option>
-                <option value="">খরিপ-১</option>
-                <option value="">খরিপ-২</option>
-              </select>
-            </div>
-            <div className="text-sm text-slate-600">
-              <select className="text-sm text-slate-600 border border-gray-300 px-2 py-1 rounded">
-                <option value="">উপজেলা নির্বাচন করুন</option>
-                <option value="">পটুয়াখালী সদর</option>
-                <option value="">বাউফল</option>
-                <option value="">গলাচিপা</option>
-                <option value="">কলাপাড়া</option>
-                <option value="">দশমিনা</option>
-                <option value="">মির্জাগঞ্জ</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-              Export CSV
-            </button>
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
-              <IoPrintOutline className="text-xl" />
-            </button>
-          </div>
-        </div>
-      </section>
+      <FilterHeader filterInfo={filterInfo}/>
 
       {/* ---------------New Overview Cards---------------------------------- */}
       <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
