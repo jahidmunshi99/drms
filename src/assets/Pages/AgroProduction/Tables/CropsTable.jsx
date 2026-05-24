@@ -3,7 +3,6 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
 const CropsTable = ({ onCropInfo, data }) => {
-  const sowingData = data.filter((item) => item.category === "sowing");
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4 mt-5">
       {/* Table Header */}
@@ -92,7 +91,7 @@ const CropsTable = ({ onCropInfo, data }) => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {sowingData?.map((item) => (
+            {data?.map((item) => (
               <tr key={item.id}>
                 <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                   {item?.id}
@@ -132,14 +131,10 @@ const CropsTable = ({ onCropInfo, data }) => {
                   >
                     <FaEye className="text-[16px]" />
                   </button>
-                  <button
-                    className="text-green-600 hover:text-green-900 p-1 inline-block"
-                  >
+                  <button className="text-green-600 hover:text-green-900 p-1 inline-block">
                     <FaPenToSquare className="text-[15px]" />
                   </button>
-                  <button
-                    className="text-red-600 hover:text-red-900 p-1 inline-block"
-                  >
+                  <button className="text-red-600 hover:text-red-900 p-1 inline-block">
                     <MdDelete className="text-[16px]" />
                   </button>
                 </td>

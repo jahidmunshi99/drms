@@ -3,19 +3,16 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
 const SeedbedTable = ({ onCropInfo, data }) => {
-const seedbedData = data.filter((item) => item.category === "seedbed");
-const seedbedTarget = seedbedData.reduce(
-  (total, item) =>
-    total +
-    item.varieties.reduce(
-      (subTotal, variety) => subTotal + variety.target,
-      0
-    ),
-  0
-);
-
-console.log(seedbedTarget);
-  console.log(seedbedTarget);
+  // const seedbedData = data.filter((item) => item.category === "seedbed");
+  const seedbedTarget = data.reduce(
+    (total, item) =>
+      total +
+      item.varieties.reduce(
+        (subTotal, variety) => subTotal + variety.target,
+        0,
+      ),
+    0,
+  );
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4">
       {/* Table Header */}
@@ -96,8 +93,8 @@ console.log(seedbedTarget);
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {seedbedData?.length > 0 ? (
-              seedbedData.map((item) => (
+            {data?.length > 0 ? (
+              data.map((item) => (
                 <tr key={item.id}>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                     {item?.id}

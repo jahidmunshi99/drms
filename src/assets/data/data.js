@@ -59,288 +59,287 @@ const overviewData = [
 ];
 
 const cultivationData = [
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_name: "Wheat",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI Gom-26",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "2",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_name: "masterd",
-      crop_type: "oilseed",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI Sarisha-6",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-7",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-8",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-9",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-14",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Sarisha-15",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "3",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "rice",
-      crop_name: "boro",
-      category: "sowing",
-      target: 600,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BRRI dhan28",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan114",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Others",
-          category_of: "local",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan99",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI dhan97",
-          category_of: "hyv",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BRRI Hybrid dhan9",
-          category_of: "Hybrid",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "4",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "oilseed",
-      crop_name: "sunflowar",
-      category: "sowing",
-      target: 1500,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "BARI-16",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Gom-28",
-          achievement: 55,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "oilseed",
-      crop_name: "sunflowar",
-      category: "harvest",
-      achievement: 245,
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "Hysun-33",
-          cultivated: 55,
-          harvest: 50,
-          production_per_hector: 1.3,
-          production: 65,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Hysun-36",
-          cultivated: 55,
-          harvest: 25,
-          production_per_hector: 1.3,
-          production: 130,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Surjamukhi-2",
-          cultivated: 30,
-          harvest: 29,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "BARI Surjamukhi-3",
-          cultivated: 55,
-          harvest: 50,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "Kironi (DS-1)",
-          cultivated: 30,
-          harvest: 27,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "DS 275",
-          cultivated: 20,
-          harvest: 18,
-          production_per_hector: 1.3,
-          production: 390,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-    {
-      id: "1",
-      f_year: "2025-26",
-      crop_session: "robi",
-      divisionId: "barisal",
-      districtId: "patuakhali",
-      upazilaId: "sadar",
-      crop_type: "rice",
-      crop_name: "boro",
-      category: "seedbed",
-      createAt: "25-june-2026",
-      varieties: [
-        {
-          name: "hyv",
-          target: 600,
-          achievement: 450,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "local",
-          target: 35,
-          achievement: 30,
-          createAt: "25-june-2026",
-        },
-        {
-          name: "hybrid",
-          category_of: "Hybrid",
-          target: 50,
-          achievement: 25,
-          createAt: "25-june-2026",
-        },
-      ],
-    },
-
+  {
+    id: "1",
+    f_year: "2025-26",
+    crop_session: "robi",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_name: "Wheat",
+    category: "sowing",
+    target: 1500,
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "BARI Gom-26",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
+  {
+    id: "2",
+    f_year: "2025-26",
+    crop_session: "robi",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_name: "masterd",
+    crop_type: "oilseed",
+    category: "sowing",
+    target: 1500,
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "BARI Sarisha-6",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Sarisha-7",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Sarisha-8",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Sarisha-9",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Sarisha-14",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Sarisha-15",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
+  {
+    id: "3",
+    f_year: "2025-26",
+    crop_session: "robi",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_type: "rice",
+    crop_name: "boro",
+    category: "sowing",
+    target: 600,
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "BRRI dhan28",
+        category_of: "hyv",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BRRI dhan114",
+        category_of: "hyv",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "Others",
+        category_of: "local",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BRRI dhan99",
+        category_of: "hyv",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BRRI dhan97",
+        category_of: "hyv",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BRRI Hybrid dhan9",
+        category_of: "Hybrid",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
+  {
+    id: "4",
+    f_year: "2025-26",
+    crop_session: "robi",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_type: "oilseed",
+    crop_name: "sunflowar",
+    category: "sowing",
+    target: 1500,
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "BARI-16",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Gom-28",
+        achievement: 55,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
+  {
+    id: "1",
+    f_year: "2025-26",
+    crop_session: "robi",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_type: "oilseed",
+    crop_name: "sunflowar",
+    category: "harvest",
+    achievement: 245,
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "Hysun-33",
+        cultivated: 55,
+        harvest: 50,
+        production_per_hector: 1.3,
+        production: 65,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "Hysun-36",
+        cultivated: 55,
+        harvest: 25,
+        production_per_hector: 1.3,
+        production: 130,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Surjamukhi-2",
+        cultivated: 30,
+        harvest: 29,
+        production_per_hector: 1.3,
+        production: 390,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "BARI Surjamukhi-3",
+        cultivated: 55,
+        harvest: 50,
+        production_per_hector: 1.3,
+        production: 390,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "Kironi (DS-1)",
+        cultivated: 30,
+        harvest: 27,
+        production_per_hector: 1.3,
+        production: 390,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "DS 275",
+        cultivated: 20,
+        harvest: 18,
+        production_per_hector: 1.3,
+        production: 390,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
+  {
+    id: "1",
+    f_year: "2025-26",
+    crop_session: "রবি",
+    divisionId: "barisal",
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    crop_type: "rice",
+    crop_name: "বোরো",
+    category: "seedbed",
+    createAt: "25-june-2026",
+    varieties: [
+      {
+        name: "hyv",
+        target: 600,
+        achievement: 450,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "local",
+        target: 35,
+        achievement: 30,
+        createAt: "25-june-2026",
+      },
+      {
+        name: "hybrid",
+        category_of: "Hybrid",
+        target: 50,
+        achievement: 25,
+        createAt: "25-june-2026",
+      },
+    ],
+  },
 ];
 
 //At a glance Basic Information
@@ -640,224 +639,233 @@ const basicInfo = [
 
 const yearsInfo = [
   {
-  id: 1,
-  fyearId: "2025-26"
+    id: 1,
+    fyearId: "2025-26",
   },
   {
     id: 2,
-    fyearId: "2024-25"
+    fyearId: "2024-25",
   },
   {
     id: 3,
-    fyearId: "2023-24"
+    fyearId: "2023-24",
   },
-    {
+  {
     id: 4,
-    fyearId: "2022-23"
+    fyearId: "2022-23",
   },
-]
+];
 const sessionInfo = [
   {
     id: 1,
     sessionId: "robi",
-    createtAt: "15-01-2026"
+    createtAt: "15-01-2026",
   },
   {
     id: 2,
-    sessionId: "kharip-1",
-    createtAt: "15-01-2026"
+    sessionId: "kharip",
+    createtAt: "15-01-2026",
   },
   {
     id: 3,
     sessionId: "kharip-2",
-    createtAt: "15-01-2026"
-  }
-  
-]
+    createtAt: "15-01-2026",
+  },
+];
 
 const divisionsInfo = [
   {
     id: 1,
     divisionId: "barisal",
-    createtAt: "15-01-2026"
+    createtAt: "15-01-2026",
   },
   {
     id: 2,
     divisionId: "khulna",
-    createtAt: "15-01-2026"
+    createtAt: "15-01-2026",
   },
   {
-  id: 3,
-  divisionId: "rangpur",
-  createtAt: "15-01-2026"
+    id: 3,
+    divisionId: "rangpur",
+    createtAt: "15-01-2026",
   },
   {
     id: 4,
     divisionId: "shylet",
-    createtAt: "15-01-2026"
-  }
-]
+    createtAt: "15-01-2026",
+  },
+];
 
 const districtsInfo = [
   {
     id: 1,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    createtAt: "15-01-2026",
   },
   {
     id: 2,
     divisionId: "barisal",
-    districtId : "barisal",
-    createtAt: "15-01-2026"
+    districtId: "barisal",
+    createtAt: "15-01-2026",
   },
-    {
+  {
     id: 3,
     divisionId: "barisal",
-    districtId : "barguna",
-    createtAt: "15-01-2026"
+    districtId: "barguna",
+    createtAt: "15-01-2026",
   },
   {
     id: 4,
     divisionId: "barisal",
-    districtId : "bhola",
-    createtAt: "15-01-2026"
+    districtId: "bhola",
+    createtAt: "15-01-2026",
   },
   {
     id: 5,
     divisionId: "barisal",
-    districtId : "jalokhati",
-    createtAt: "15-01-2026"
+    districtId: "jalokhati",
+    createtAt: "15-01-2026",
   },
   {
     id: 6,
     divisionId: "khulna",
-    districtId : "khulna",
-    createtAt: "15-01-2026"
+    districtId: "khulna",
+    createtAt: "15-01-2026",
   },
   {
-  id: 7,
-  divisionId: "rangpur",
-  districtId: "rangpur",
-  createtAt: "15-01-2026"
+    id: 7,
+    divisionId: "rangpur",
+    districtId: "rangpur",
+    createtAt: "15-01-2026",
   },
   {
     id: 8,
     divisionId: "shylet",
     districtId: "shylet",
-    createtAt: "15-01-2026"
-  }
-]
+    createtAt: "15-01-2026",
+  },
+];
 
 const upazilaInfo = [
   {
     id: 1,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 2,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "bauphal",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "bauphal",
+    createtAt: "15-01-2026",
   },
   {
     id: 3,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "golachipa",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "golachipa",
+    createtAt: "15-01-2026",
   },
   {
     id: 4,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "kolapara",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "kolapara",
+    createtAt: "15-01-2026",
   },
   {
     id: 5,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "dashmina",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "dashmina",
+    createtAt: "15-01-2026",
   },
   {
     id: 6,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "mirjagonj",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "mirjagonj",
+    createtAt: "15-01-2026",
   },
   {
     id: 7,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "dumki",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "dumki",
+    createtAt: "15-01-2026",
   },
   {
     id: 8,
     divisionId: "barisal",
-    districtId : "patuakhali",
-    upazilaId : "rangabali",
-    createtAt: "15-01-2026"
+    districtId: "patuakhali",
+    upazilaId: "rangabali",
+    createtAt: "15-01-2026",
   },
   {
     id: 9,
     divisionId: "barisal",
-    districtId : "barisal",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "barisal",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
-    {
+  {
     id: 10,
     divisionId: "barisal",
-    districtId : "barguna",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "barguna",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 11,
     divisionId: "barisal",
-    districtId : "bhola",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "bhola",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 12,
     divisionId: "barisal",
-    districtId : "jalokhati",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "jalokhati",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 13,
     divisionId: "khulna",
-    districtId : "khulna",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    districtId: "khulna",
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 14,
     divisionId: "rangpur",
     districtId: "rangpur",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
   },
   {
     id: 15,
     divisionId: "shylet",
     districtId: "shylet",
-    upazilaId : "sadar",
-    createtAt: "15-01-2026"
-  }
-]
+    upazilaId: "sadar",
+    createtAt: "15-01-2026",
+  },
+];
 // const allData = () => {
 //   return { commonFields };
 // };
 
-export { basicInfo, commonFields, overviewData, cultivationData, yearsInfo, sessionInfo, divisionsInfo, districtsInfo, upazilaInfo };
+export {
+  basicInfo,
+  commonFields,
+  cultivationData,
+  districtsInfo,
+  divisionsInfo,
+  overviewData,
+  sessionInfo,
+  upazilaInfo,
+  yearsInfo,
+};

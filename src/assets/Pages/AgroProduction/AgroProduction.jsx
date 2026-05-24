@@ -1,20 +1,18 @@
 import { useMemo, useState } from "react";
-import { IoPrintOutline } from "react-icons/io5";
+import { cultivationData, sessionInfo, yearsInfo } from "../../data/data.js";
 import EditFormModal from "./EditFormModal";
+import FilterHeader from "./FilterHeader.jsx";
 import HarvestForm from "./Forms/HarvestForm";
 import SeedbedFrom from "./Forms/SeedbedFrom";
 import SowingForm from "./Forms/SowingForm";
 import CropsTable from "./Tables/CropsTable";
 import HarvestTable from "./Tables/HarvestTable";
 import SeedbedTable from "./Tables/SeedbedTable";
-import {cultivationData, yearsInfo, sessionInfo} from "../../data/data.js"
-import FilterHeader from "./FilterHeader.jsx";
-
 
 const AgroProduction = () => {
-  const data = cultivationData
-  const years = yearsInfo
-  const sessions = sessionInfo
+  const data = cultivationData;
+  const years = yearsInfo;
+  const sessions = sessionInfo;
   const [show, setShow] = useState(false);
   const [showHarvest, setShowHarvest] = useState(false);
   const [showSeedbed, setShowSeedbed] = useState(false);
@@ -23,41 +21,61 @@ const AgroProduction = () => {
   const [seedbedInfo, setSeedbedInfo] = useState(null);
   const [harvestInfo, setHarvesInfo] = useState(null);
 
-  const [selectedDivision, setSelectedDivision] = useState("")
-  const [selectedDistrict, setSelectedDistrict] = useState("")
-  const [selectedUpazila, setSelectedUpazila] = useState("")
-  const [selectedSession, setSelectedSession] = useState("")
-  const [selectedFYear, setSelectedFYear] = useState("")
-
+  const [selectedDivision, setSelectedDivision] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedUpazila, setSelectedUpazila] = useState("");
+  const [selectedSession, setSelectedSession] = useState("");
+  const [selectedFYear, setSelectedFYear] = useState("");
 
   /* -------------------------------------------------------------------------- */
   /*                               FILTER OPTIONS                               */
   /* -------------------------------------------------------------------------- */
 
-  const division = useMemo(()=>{
-    return [...new Set(data.map((item)=> item?.divisionId))]
-    }, [data])
-  
-  const districtList = useMemo(()=>{
-    if(!selectedDivision) return []
-    return [...new Set(data.filter((divinfo)=>divinfo?.divisionId === selectedDivision).map((item)=> item?.districtId))]
-  }, [data, selectedDivision])
+  const division = useMemo(() => {
+    return [...new Set(data.map((item) => item?.divisionId))];
+  }, [data]);
 
-  const upazilaList = useMemo(()=> {
-    if(!selectedDistrict) return []
-    return [...new Set(data.filter((dists)=> dists?.districtId === selectedDistrict).map((item)=> item?.upazilaId))]
-  }, [data, selectedDistrict])
+  const districtList = useMemo(() => {
+    if (!selectedDivision) return [];
+    return [
+      ...new Set(
+        data
+          .filter((divinfo) => divinfo?.divisionId === selectedDivision)
+          .map((item) => item?.districtId),
+      ),
+    ];
+  }, [data, selectedDivision]);
 
+  const upazilaList = useMemo(() => {
+    if (!selectedDistrict) return [];
+    return [
+      ...new Set(
+        data
+          .filter((dists) => dists?.districtId === selectedDistrict)
+          .map((item) => item?.upazilaId),
+      ),
+    ];
+  }, [data, selectedDistrict]);
 
-  const sessionList = useMemo(()=>{
-    return [...new Set(data.map((sess)=> sess?.crop_session))]
-  },[data])
+  const sessionList = useMemo(() => {
+    return [...new Set(data.map((sess) => sess?.crop_session))];
+  }, [data]);
 
-  const fYearList = useMemo(()=>{
-        return [...new Set(data.map((fyear)=> fyear?.f_year))]
-  },[data])
+  const fYearList = useMemo(() => {
+    return [...new Set(data.map((fyear) => fyear?.f_year))];
+  }, [data]);
 
+  const seedBed = [
+    ...new Set(
+      data.filter((bed) => bed.category === "seedbed").map((item) => item),
+    ),
+  ];
 
+  const sowing = [
+    ...new Set(
+      data.filter((bed) => bed.category === "sowing").map((item) => item),
+    ),
+  ];
 
   /* -------------------------------------------------------------------------- */
   /*                               FILTER HANDLER                               */
@@ -68,28 +86,27 @@ const AgroProduction = () => {
     setSelectedUpazila("");
   };
 
-  const handleDistrict = (district)=>{
+  const handleDistrict = (district) => {
     setSelectedDistrict(district);
-    setSelectedUpazila("")
-  }
+    setSelectedUpazila("");
+  };
 
-    const handleUpazila = (upazila)=>{
-    setSelectedUpazila(upazila)
-  }
+  const handleUpazila = (upazila) => {
+    setSelectedUpazila(upazila);
+  };
 
-  const handleSession = (session)=>{
-    setSelectedSession(session)
-  }
+  const handleSession = (session) => {
+    setSelectedSession(session);
+  };
 
-  const handleFYear = (fyear)=>{
-    setSelectedFYear(fyear)
-  }
+  const handleFYear = (fyear) => {
+    setSelectedFYear(fyear);
+  };
 
-
-   const filterInfo = {
-    division, 
-    districtList, 
-    upazilaList, 
+  const filterInfo = {
+    division,
+    districtList,
+    upazilaList,
     sessionList,
     fYearList,
 
@@ -97,8 +114,8 @@ const AgroProduction = () => {
     handleDistrict,
     handleUpazila,
     handleSession,
-    handleFYear
-   }
+    handleFYear,
+  };
 
   const handleClose = () => {
     setShowEdit(!showEdit);
@@ -150,7 +167,7 @@ const AgroProduction = () => {
         />
       )}
       {/* Top Header */}
-      <FilterHeader filterInfo={filterInfo}/>
+      <FilterHeader filterInfo={filterInfo} />
 
       {/* ---------------New Overview Cards---------------------------------- */}
       <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -252,9 +269,9 @@ const AgroProduction = () => {
         {/* <!-- Left Large Card --> */}
         <div className="lg:col-span-3">
           {/* Table-1 Seedbed Overview */}
-          <SeedbedTable onCropInfo={onSeedBedInfo} data={data} />
+          <SeedbedTable onCropInfo={onSeedBedInfo} data={seedBed} />
           {/* Table-2 Crops Overview */}
-          <CropsTable onCropInfo={onCropInfo} data={data} />
+          <CropsTable onCropInfo={onCropInfo} data={sowing} />
           {/* Table-3 Harvest Overview */}
           <HarvestTable onCropInfo={onHarvestInfo} data={data} />
         </div>
