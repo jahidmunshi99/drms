@@ -7,8 +7,12 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
       0,
     ) || 0;
 
-  const pct = item?.target ? Math.round((total / item.target) * 100) : 0;
+  const totalTarget =
+    item.varieties.reduce((sum, i) => sum + parseFloat(i.target), 0) || 0;
 
+  const pct = totalTarget ? Math.round((total / totalTarget) * 100) : 0;
+
+  console.log(totalTarget);
   const color =
     pct >= 100 ? "bg-emerald-600" : pct >= 60 ? "bg-amber-500" : "bg-red-500";
 
@@ -18,8 +22,8 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">
-              {item?.crop_name}
+            <h2 className="text-xl font-semibold text-gray-800 capitalize">
+              Seedbed: {item?.crop_name}
             </h2>
 
             <p className="mt-1 text-sm text-gray-500">
@@ -46,7 +50,7 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
               </p>
 
               <h3 className="mt-2 text-3xl font-bold text-blue-700">
-                {(item?.target || 0).toLocaleString()}
+                {totalTarget}
               </h3>
 
               <p className="mt-1 text-sm text-blue-500">Hectare</p>
@@ -116,6 +120,10 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                     </th>
 
                     <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Date/Time
+                    </th>
+
+                    <th className="border-b border-gray-200 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                       Progress
                     </th>
                   </tr>
@@ -148,19 +156,23 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                             {(v?.achievement || 0).toLocaleString()} hec
                           </td>
 
+                          <td className="border-b border-gray-100 px-4 py-3 text-sm text-gray-700 capitalize">
+                            {(v?.createAt || 0).toLocaleString()}
+                          </td>
+
                           <td className="border-b border-gray-100 px-4 py-3">
                             <div className="flex items-center gap-3">
                               <div className="h-2 flex-1 overflow-hidden rounded-full bg-gray-200">
                                 <div
                                   className="h-full rounded-full bg-emerald-500"
                                   style={{
-                                    width: `${Math.min(share, 100)}%`,
+                                    width: `${Math.min(pct, 100)}%`,
                                   }}
                                 />
                               </div>
 
                               <span className="min-w-[40px] text-sm font-medium text-gray-600">
-                                {share}%
+                                {pct}%
                               </span>
                             </div>
                           </td>

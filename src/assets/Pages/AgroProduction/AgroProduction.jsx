@@ -77,6 +77,12 @@ const AgroProduction = () => {
     ),
   ];
 
+  const harvest = [
+    ...new Set(
+      data.filter((item) => item.category === "harvest").map((i) => i),
+    ),
+  ];
+
   /* -------------------------------------------------------------------------- */
   /*                               FILTER HANDLER                               */
   /* -------------------------------------------------------------------------- */
@@ -126,15 +132,14 @@ const AgroProduction = () => {
     setShowEdit(true);
   };
 
+  const onSeedBedInfo = (item) => {
+    setSeedbedInfo(item);
+    setShowSeedbed(!showSeedbed);
+  };
+
   const onCropInfo = (item) => {
     setCropInfo(item);
     setShow(!show);
-  };
-
-  const onSeedBedInfo = (item) => {
-    console.log(item);
-    setSeedbedInfo(item);
-    setShowSeedbed(!showSeedbed);
   };
 
   const onHarvestInfo = (item) => {
@@ -145,6 +150,13 @@ const AgroProduction = () => {
   return (
     <>
       {showEdit && <EditFormModal handleClose={handleClose} />}
+      {showSeedbed && (
+        <SeedbedFrom
+          item={seedbedInfo}
+          onClose={() => setShowSeedbed(!showSeedbed)}
+          handleEdit={handleEdit}
+        />
+      )}
       {show && (
         <SowingForm
           item={cropInfo}
@@ -159,13 +171,7 @@ const AgroProduction = () => {
           handleEdit={handleEdit}
         />
       )}
-      {showSeedbed && (
-        <SeedbedFrom
-          item={seedbedInfo}
-          onClose={() => setShowSeedbed(!showSeedbed)}
-          handleEdit={handleEdit}
-        />
-      )}
+
       {/* Top Header */}
       <FilterHeader filterInfo={filterInfo} />
 
@@ -174,52 +180,96 @@ const AgroProduction = () => {
         {/* <!-- Total Target --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Total Target
+            {/* Total Target */}
+            লক্ষ্যমাত্রা
           </p>
-          <h2 className="text-3xl font-bold text-cyan-500 mt-2">
+          <div>
+            <div className="flex justify-between gap-4 border-b-1 py-2 font-bold text-cyan-500 mt-2">
+              <span>বীজতলা</span>
+              <span>২৮০ হেক্টর</span>
+            </div>
+            <div className="flex justify-between gap-4 border-b-1 py-2 font-bold text-cyan-500 mt-2">
+              <span>আবাদ</span>
+              <span>১২৮০ হেক্টর</span>
+            </div>
+          </div>
+          {/* <h2 className="text-3xl font-bold text-cyan-500 mt-2">
             1,230 <span className="text-lg font-medium">ha</span>
           </h2>
-          <p className="text-sm text-gray-500 mt-1">5 crop targets</p>
+          <p className="text-sm text-gray-500 mt-1">5 crop targets</p> */}
         </div>
         {/* <!-- Achievements --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Achievements
-          </p>
-          <h2 className="text-3xl font-bold text-yellow-500 mt-2">4</h2>
-          <p className="text-sm text-gray-500 mt-1">3 sowing, 1 harvest</p>
+            {/* Achievements */}
+            অর্জন
+          </p>{" "}
+          <div className="grid gap-2">
+            <div>
+              <div className="flex justify-between gap-4 py-2 font-bold text-yellow-500 mt-2">
+                <span>বীজতলা</span>
+                <span>২৮০ হেক্টর</span>
+              </div>
+              {/* <!-- Progress Bar --> */}
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-yellow-500 h-2 rounded-full w-[44%]"></div>
+              </div>
+              <p className="text-sm text-yellow-500 mt-2 font-medium">
+                44% of target
+              </p>
+            </div>
+            <div>
+              <div className="flex justify-between gap-4 py-2 font-bold text-purple-600 mt-2">
+                <span>আবাদ</span>
+                <span>১২৮০ হেক্টর</span>
+              </div>
+              {/* <!-- Progress Bar --> */}
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-purple-500 h-2 rounded-full w-[44%]"></div>
+              </div>
+              <p className="text-sm text-purple-500 mt-2 font-medium">
+                44% of target
+              </p>
+            </div>
+          </div>
         </div>
-        {/* <!-- Sowing Progress --> */}
+        {/* <!-- Crop Cutting --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-          <div>
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              Sowing Progress
-            </p>
+          <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+            {/* Achievements */}
+            কর্তন
+          </p>{" "}
+          <div className="grid gap-2">
+            <div>
+              <div className="flex justify-between gap-4 py-2 font-bold text-green-500 mt-2">
+                <span>মোট কর্তন</span>
+                <span>২৮০ হেক্টর</span>
+              </div>
+              {/* <!-- Progress Bar --> */}
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-green-500 h-2 rounded-full w-[44%]"></div>
+              </div>
+              <p className="text-sm text-green-500 mt-2 font-medium">
+                44% of target
+              </p>
+            </div>
+            <div>
+              <div className="grid gap-2 grid-cols-2 mt-4">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                  <span>হাইব্রিড</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-purple-600">
+                  <span>উফশী</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                  <span>স্থানীয়</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <h2 className="text-3xl font-bold text-purple-600 mt-4">
-            540 <span className="text-base font-medium text-gray-500">ha</span>
-          </h2>
-
-          {/* <!-- Progress Bar --> */}
-          <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
-            <div className="bg-purple-500 h-2 rounded-full w-[44%]"></div>
-          </div>
-
-          <p className="text-sm text-red-500 mt-2 font-medium">44% of target</p>
-        </div>
-
-        {/* <!-- Seedbed --> */}
-        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-          <div>
-            <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-              Seedbed
-            </p>
-          </div>
-          <h2 className="text-3xl font-bold text-green-500 mt-2">
-            480 <span className="text-lg font-medium">MT</span>
-          </h2>
-          <p className="text-sm text-gray-500 mt-1">1 completed</p>
         </div>
         {/* <!-- Harvest --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
@@ -269,11 +319,11 @@ const AgroProduction = () => {
         {/* <!-- Left Large Card --> */}
         <div className="lg:col-span-3">
           {/* Table-1 Seedbed Overview */}
-          <SeedbedTable onCropInfo={onSeedBedInfo} data={seedBed} />
+          <SeedbedTable onSeedbedInfo={onSeedBedInfo} bedData={seedBed} />
           {/* Table-2 Crops Overview */}
           <CropsTable onCropInfo={onCropInfo} data={sowing} />
           {/* Table-3 Harvest Overview */}
-          <HarvestTable onCropInfo={onHarvestInfo} data={data} />
+          <HarvestTable onCropInfo={onHarvestInfo} data={harvest} />
         </div>
         {/* <!-- Right Side --> */}
         <div className="lg:col-span-1">

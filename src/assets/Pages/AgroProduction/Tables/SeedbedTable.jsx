@@ -2,17 +2,29 @@ import { FaEye } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
-const SeedbedTable = ({ onCropInfo, data }) => {
-  // const seedbedData = data.filter((item) => item.category === "seedbed");
-  const seedbedTarget = data.reduce(
-    (total, item) =>
-      total +
-      item.varieties.reduce(
-        (subTotal, variety) => subTotal + variety.target,
-        0,
-      ),
-    0,
-  );
+const SeedbedTable = ({ onSeedbedInfo, bedData }) => {
+  const filterCrop = bedData.map((item) => {
+    const totals = item.varieties.reduce(
+      (sum, varity) => {
+        sum.totalTarget += varity.target;
+        sum.totalAchivement += varity.achievement;
+        sum.progress = Math.round(
+          (sum.totalAchivement / sum.totalTarget) * 100,
+        );
+        return sum;
+      },
+      { totalTarget: 0, totalAchivement: 0 },
+    );
+    return {
+      crop_name: item.crop_name,
+      crop_session: item.crop_session,
+      f_year: item.f_year,
+      crop_type: item.crop_type,
+      varieties: item.varieties,
+      ...totals,
+    };
+  });
+
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4">
       {/* Table Header */}
@@ -80,6 +92,14 @@ const SeedbedTable = ({ onCropInfo, data }) => {
                 className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 <div className="flex items-center justify-center space-x-1">
+                  <span>progress</span>
+                </div>
+              </th>
+              <th
+                scope="col"
+                className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                <div className="flex items-center justify-center space-x-1">
                   <span>Updated At</span>
                 </div>
               </th>
@@ -93,8 +113,8 @@ const SeedbedTable = ({ onCropInfo, data }) => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {data?.length > 0 ? (
-              data.map((item) => (
+            {filterCrop?.length > 0 ? (
+              filterCrop.map((item) => (
                 <tr key={item.id}>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                     {item?.id}
@@ -111,22 +131,24 @@ const SeedbedTable = ({ onCropInfo, data }) => {
                     {item?.crop_name}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
-                    {seedbedTarget} <sup>hec</sup>
+                    {item?.totalTarget} <sub>hec</sub>
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {item?.target}{" "}
-                    <sup className="px-2 py-1 font-medium bg-red-100 text-red-600 rounded-md">
-                      90%
-                    </sup>
+                    {item?.totalAchivement} <sub>hec</sub>
                   </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {item?.createAt}
+                  <td className="p-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
+                    <span className="px-2 py-1 font-medium bg-red-100 text-red-600 rounded-md">
+                      {item?.progress}%
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
+                    {item?.varieties[item.varieties.length - 1]?.createAt}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
                     <button
                       className="text-gray-600 hover:text-blue-900 px-2 py-1 inline-block cursor-pointer"
                       onClick={() => {
-                        onCropInfo(item);
+                        onSeedbedInfo(item);
                       }}
                     >
                       <FaEye className="text-[16px]" />

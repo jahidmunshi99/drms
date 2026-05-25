@@ -7,7 +7,7 @@ export default function SowingForm({ item, onClose, handleEdit }) {
       0,
     ) || 0;
 
-  const pct = item?.target ? Math.round((total / item.target) * 100) : 0;
+  const pct = item?.target ? Math.round((total / item?.target) * 100) : 0;
 
   const color =
     pct >= 100 ? "bg-emerald-600" : pct >= 60 ? "bg-amber-500" : "bg-red-500";
