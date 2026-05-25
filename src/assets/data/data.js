@@ -68,17 +68,17 @@ const cultivationData = [
     upazilaId: "sadar",
     crop_name: "Wheat",
     category: "sowing",
-    target: 1500,
+    target: 500,
     createAt: "25-june-2026",
     varieties: [
       {
         name: "BARI Gom-26",
-        achievement: 55,
+        achievement: 50,
         createAt: "25-june-2026",
       },
       {
         name: "BARI Gom-28",
-        achievement: 55,
+        achievement: 85,
         createAt: "25-june-2026",
       },
       {

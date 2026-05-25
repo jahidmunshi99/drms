@@ -41,7 +41,7 @@ const AgroProduction = () => {
       ...new Set(
         data
           .filter((divinfo) => divinfo?.divisionId === selectedDivision)
-          .map((item) => item?.districtId),
+          .map((item) => item?.districtId)
       ),
     ];
   }, [data, selectedDivision]);
@@ -52,7 +52,7 @@ const AgroProduction = () => {
       ...new Set(
         data
           .filter((dists) => dists?.districtId === selectedDistrict)
-          .map((item) => item?.upazilaId),
+          .map((item) => item?.upazilaId)
       ),
     ];
   }, [data, selectedDistrict]);
@@ -67,19 +67,19 @@ const AgroProduction = () => {
 
   const seedBed = [
     ...new Set(
-      data.filter((bed) => bed.category === "seedbed").map((item) => item),
+      data.filter((bed) => bed.category === "seedbed").map((item) => item)
     ),
   ];
 
   const sowing = [
     ...new Set(
-      data.filter((bed) => bed.category === "sowing").map((item) => item),
+      data.filter((bed) => bed.category === "sowing").map((item) => item)
     ),
   ];
 
   const harvest = [
     ...new Set(
-      data.filter((item) => item.category === "harvest").map((i) => i),
+      data.filter((item) => item.category === "harvest").map((i) => i)
     ),
   ];
 
@@ -198,17 +198,18 @@ const AgroProduction = () => {
           </h2>
           <p className="text-sm text-gray-500 mt-1">5 crop targets</p> */}
         </div>
-        {/* <!-- Achievements --> */}
+
+        {/* <!-- Achivement Swing --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            {/* Achievements */}
+            {/* Achievements Seedbed */}
             অর্জন
           </p>{" "}
           <div className="grid gap-2">
             <div>
               <div className="flex justify-between gap-4 py-2 font-bold text-yellow-500 mt-2">
                 <span>বীজতলা</span>
-                <span>২৮০ হেক্টর</span>
+                <span>৮০ হেক্টর</span>
               </div>
               {/* <!-- Progress Bar --> */}
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -219,9 +220,34 @@ const AgroProduction = () => {
               </p>
             </div>
             <div>
-              <div className="flex justify-between gap-4 py-2 font-bold text-purple-600 mt-2">
-                <span>আবাদ</span>
-                <span>১২৮০ হেক্টর</span>
+              <div className="grid gap-2 grid-cols-2 mt-4">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-yellow-600">
+                  <span>হাইব্রিড</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-yellow-600">
+                  <span>উফশী</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-yellow-600">
+                  <span>স্থানীয়</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <!-- Crop swing --> */}
+        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
+          <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
+            {/* Achievements */}
+            আবাদ
+          </p>{" "}
+          <div className="grid gap-2">
+            <div>
+              <div className="flex justify-between gap-4 py-2 font-bold text-purple-500 mt-2">
+                <span>মোট আবাদ</span>
+                <span>২৮০ হেক্টর</span>
               </div>
               {/* <!-- Progress Bar --> */}
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -230,6 +256,22 @@ const AgroProduction = () => {
               <p className="text-sm text-purple-500 mt-2 font-medium">
                 44% of target
               </p>
+            </div>
+            <div>
+              <div className="grid gap-2 grid-cols-2 mt-4">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                  <span>হাইব্রিড</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-purple-600">
+                  <span>উফশী</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                  <span>স্থানীয়</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -255,15 +297,15 @@ const AgroProduction = () => {
             </div>
             <div>
               <div className="grid gap-2 grid-cols-2 mt-4">
-                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-green-600">
                   <span>হাইব্রিড</span>
                   <span>১২৮০ হে.</span>
                 </div>
-                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-purple-600">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-green-600">
                   <span>উফশী</span>
                   <span>১২৮০ হে.</span>
                 </div>
-                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-purple-600">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-green-600">
                   <span>স্থানীয়</span>
                   <span>১২৮০ হে.</span>
                 </div>
@@ -274,43 +316,33 @@ const AgroProduction = () => {
         {/* <!-- Harvest --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Harvest Progress
-          </p>
-          <h2 className="text-3xl font-bold text-purple-500 mt-2">
-            540 <span className="text-lg font-medium">ha</span>
-          </h2>
-          <p className="text-sm text-red-500 mt-1">44% of Sowing</p>
-        </div>
-        {/* <!-- Production --> */}
-        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-          <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Production
-          </p>
-          <h2 className="text-3xl font-bold text-green-500 mt-2">
-            480 <span className="text-lg font-medium">MT</span>
-          </h2>
-          <p className="text-sm text-gray-500 mt-1">1 completed</p>
-        </div>
-        {/* <!-- Damage --> */}
-        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-          <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Damage Progress
-          </p>
-          <h2 className="text-3xl font-bold text-purple-500 mt-2">
-            50 <span className="text-lg font-medium">ha</span>
-          </h2>
-          <p className="text-sm text-red-500 mt-1">44% of Sowing</p>
-        </div>
-
-        {/* <!-- Harvest --> */}
-        <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
-          <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
-            Damage
-          </p>
-          <h2 className="text-3xl font-bold text-green-500 mt-2">
-            480 <span className="text-lg font-medium">MT</span>
-          </h2>
-          <p className="text-sm text-gray-500 mt-1">1 completed</p>
+            {/* Achievements */}
+            উৎপাদন
+          </p>{" "}
+          <div className="grid gap-2">
+            <div>
+              <div className="flex justify-between gap-4 py-2 font-bold text-cyan-500 mt-2">
+                <span>মোট উৎপাদন</span>
+                <span>২৮০ মে. টন</span>
+              </div>
+            </div>
+            <div>
+              <div className="grid gap-2 grid-cols-2 mt-4">
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-cyan-600">
+                  <span>হাইব্রিড</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-cyan-600">
+                  <span>উফশী</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+                <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-cyan-600">
+                  <span>স্থানীয়</span>
+                  <span>১২৮০ হে.</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

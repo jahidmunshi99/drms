@@ -3,6 +3,20 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 
 const CropsTable = ({ onCropInfo, data }) => {
+  const filterCrops = data.map((item) => {
+    const totalAchivement = item?.varieties.reduce(
+      (sum, verity) => sum + verity.achievement,
+      0 || 0
+    );
+
+    const progress = Math.floor((totalAchivement / item.target) * 100);
+    return {
+      ...item,
+      totalAchivement,
+      progress,
+    };
+  });
+
   return (
     <div className="bg-white shadow-md rounded-lg px-4 py-4 mt-5">
       {/* Table Header */}
@@ -91,7 +105,7 @@ const CropsTable = ({ onCropInfo, data }) => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {data?.map((item) => (
+            {filterCrops?.map((item) => (
               <tr key={item.id}>
                 <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-left">
                   {item?.id}
@@ -111,11 +125,11 @@ const CropsTable = ({ onCropInfo, data }) => {
                   {item?.target} <sup>hec</sup>
                 </td>
                 <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-center capitalize">
-                  1.5 <sup>hec</sup>
+                  {item?.totalAchivement || 0} <sup>hec</sup>
                 </td>
                 <td className="px-2 py-2 whitespace-nowrap text-sm text-gray-500 text-center">
                   <span className="px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-md">
-                    90%
+                    {item?.progress || 0}%
                   </span>
                 </td>
 
