@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { cultivationData, sessionInfo, yearsInfo } from "../../data/data.js";
-import EditFormModal from "./EditFormModal";
 import FilterHeader from "./FilterHeader.jsx";
+import EditFormModal from "./Forms/EditFormModal.jsx";
 import HarvestForm from "./Forms/HarvestForm";
 import SeedbedFrom from "./Forms/SeedbedFrom";
 import SowingForm from "./Forms/SowingForm";
@@ -13,6 +13,7 @@ const AgroProduction = () => {
   const data = cultivationData;
   const years = yearsInfo;
   const sessions = sessionInfo;
+  const [itemToUpdate, setItemToUpdate] = useState("");
   const [show, setShow] = useState(false);
   const [showHarvest, setShowHarvest] = useState(false);
   const [showSeedbed, setShowSeedbed] = useState(false);
@@ -41,7 +42,7 @@ const AgroProduction = () => {
       ...new Set(
         data
           .filter((divinfo) => divinfo?.divisionId === selectedDivision)
-          .map((item) => item?.districtId)
+          .map((item) => item?.districtId),
       ),
     ];
   }, [data, selectedDivision]);
@@ -52,7 +53,7 @@ const AgroProduction = () => {
       ...new Set(
         data
           .filter((dists) => dists?.districtId === selectedDistrict)
-          .map((item) => item?.upazilaId)
+          .map((item) => item?.upazilaId),
       ),
     ];
   }, [data, selectedDistrict]);
@@ -67,19 +68,19 @@ const AgroProduction = () => {
 
   const seedBed = [
     ...new Set(
-      data.filter((bed) => bed.category === "seedbed").map((item) => item)
+      data.filter((bed) => bed.category === "seedbed").map((item) => item),
     ),
   ];
 
   const sowing = [
     ...new Set(
-      data.filter((bed) => bed.category === "sowing").map((item) => item)
+      data.filter((bed) => bed.category === "sowing").map((item) => item),
     ),
   ];
 
   const harvest = [
     ...new Set(
-      data.filter((item) => item.category === "harvest").map((i) => i)
+      data.filter((item) => item.category === "harvest").map((i) => i),
     ),
   ];
 
@@ -126,8 +127,10 @@ const AgroProduction = () => {
   const handleClose = () => {
     setShowEdit(!showEdit);
   };
-  const handleEdit = () => {
+  const handleEdit = (item) => {
+    setItemToUpdate(item);
     setShow(false);
+    setShowSeedbed(false);
     setShowHarvest(false);
     setShowEdit(true);
   };
@@ -149,7 +152,9 @@ const AgroProduction = () => {
 
   return (
     <>
-      {showEdit && <EditFormModal handleClose={handleClose} />}
+      {showEdit && (
+        <EditFormModal itemToUpdate={itemToUpdate} handleClose={handleClose} />
+      )}
       {showSeedbed && (
         <SeedbedFrom
           item={seedbedInfo}

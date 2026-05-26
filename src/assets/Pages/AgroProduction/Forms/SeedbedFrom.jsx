@@ -9,8 +9,6 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
     };
   });
 
-  console.log(pct);
-
   const color =
     pct >= 100 ? "bg-emerald-600" : pct >= 60 ? "bg-amber-500" : "bg-red-500";
 
@@ -133,7 +131,7 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                   {item?.varieties?.length > 0 ? (
                     item.varieties.map((v, i) => {
                       const percent = Math.floor(
-                        ((v?.achievement || 0) / (v?.target || 1)) * 100
+                        ((v?.achievement || 0) / (v?.target || 1)) * 100,
                       );
 
                       return (
@@ -203,10 +201,12 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
           </button>
 
           <button
-            onClick={handleEdit}
+            onClick={() => {
+              handleEdit(item);
+            }}
             className="rounded border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100 cursor-pointer"
           >
-            Edit
+            Edit/Update
           </button>
 
           <button

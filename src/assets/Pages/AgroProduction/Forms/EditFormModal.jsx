@@ -13,7 +13,8 @@ const VARIETIES = [
   "Other",
 ];
 
-const EditFormModal = ({ handleClose }) => {
+const EditFormModal = ({ handleClose, itemToUpdate }) => {
+  console.log(itemToUpdate);
   // Initial state with sample data
   const [rows, setRows] = useState([
     { name: "BARI Gom-25", achievement_ha: 640 },
@@ -77,10 +78,11 @@ const EditFormModal = ({ handleClose }) => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
           <div>
             <h2 className="text-[15px] font-semibold text-gray-900">
-              Achievement entry — Wheat
+              Achievement — Wheat
             </h2>
             <p className="mt-0.5 text-[12px] text-gray-400">
-              2025-26 · Robi · Savar · Seedbed
+              {itemToUpdate.f_year} · {itemToUpdate.crop_session} · Savar ·
+              Seedbed
             </p>
           </div>
           <button className="flex items-center justify-center w-8 h-8 text-base text-gray-400 transition-colors border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
@@ -98,48 +100,78 @@ const EditFormModal = ({ handleClose }) => {
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
               Record details
             </p>
-
-            {[
-              { label: "Financial year", value: "2025-26" },
-              { label: "Session", value: "Robi", badge: true },
-              { label: "Upazila", value: "Savar" },
-              { label: "Crop", value: "Wheat" },
-              { label: "Category", value: "Seedbed" },
-              { label: "Target", value: "1,500 ha" },
-            ].map((detail, idx) => (
-              <div key={idx} className="mb-4 ">
+            <div>
+              {/* Session */}
+              <div className="mb-4 ">
                 <div className="text-[10px] uppercase tracking-wide text-gray-400">
-                  {detail.label}
+                  Session
                 </div>
-                <div className="mt-0.5 text-[13px] font-medium text-gray-800">
-                  {detail.badge ? (
-                    <span className="inline-block rounded bg-teal-50 px-2 py-0.5 text-[11px] font-medium text-teal-800">
-                      {detail.value}
-                    </span>
-                  ) : (
-                    detail.value
-                  )}
+                <span className="inline-block rounded bg-teal-50 px-2 py-0.5 text-[11px] font-medium text-teal-800 capitalize">
+                  {itemToUpdate.crop_session}
+                </span>
+              </div>
+              {/* District ID */}
+              <div className="mb-4 ">
+                <div className="text-[10px] uppercase tracking-wide text-gray-400">
+                  district
+                </div>
+                <div className="mt-0.5 text-[13px] font-medium text-gray-800 capitalize">
+                  patuakhali
                 </div>
               </div>
-            ))}
-
+              {/* Upazila ID */}
+              <div className="mb-4 ">
+                <div className="text-[10px] uppercase tracking-wide text-gray-400">
+                  Upazila
+                </div>
+                <div className="mt-0.5 text-[13px] font-medium text-gray-800">
+                  All
+                </div>
+              </div>
+              {/* Crop Name */}
+              <div className="mb-4 ">
+                <div className="text-[10px] uppercase tracking-wide text-gray-400">
+                  Crop Name
+                </div>
+                <div className="mt-0.5 text-[13px] font-medium text-gray-800 capitalize">
+                  {itemToUpdate.crop_type}
+                </div>
+              </div>
+              {/* Category */}
+              <div className="mb-4 ">
+                <div className="text-[10px] uppercase tracking-wide text-gray-400">
+                  Category
+                </div>
+                <div className="mt-0.5 text-[13px] font-medium text-gray-800">
+                  {itemToUpdate?.category || "null"}
+                </div>
+              </div>
+              {/* Total Target */}
+              <div className="mb-4 ">
+                <div className="text-[10px] uppercase tracking-wide text-gray-400">
+                  target
+                </div>
+                <div className="mt-0.5 text-[13px] font-medium text-gray-800">
+                  {itemToUpdate?.totalTarget || "null"}
+                </div>
+              </div>
+            </div>
             {/* Progress Card */}
             <div className="p-3 mt-2 bg-white border border-gray-200 rounded-xl">
               <div className="mb-1.5 flex justify-between text-[11px]">
                 <span className="text-gray-500">Achievement vs target</span>
                 <span className={`font-semibold ${colors.text}`}>
-                  {percentage}%
+                  {itemToUpdate.progress}%
                 </span>
               </div>
               <div className="h-2 overflow-hidden bg-[#F9F9F9] rounded">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${colors.bar}`}
-                  style={{ width: `${Math.min(percentage, 100)}%` }}
+                  style={{ width: `${Math.min(itemToUpdate.progress, 100)}%` }}
                 ></div>
               </div>
               <div className="mt-1 text-[11px] text-gray-400">
-                {totalAchievement.toLocaleString()} /{" "}
-                {TARGET_HA.toLocaleString()} ha
+                {itemToUpdate?.totalTarget} / {itemToUpdate?.totalAchivement} ha
               </div>
             </div>
           </div>
@@ -160,12 +192,12 @@ const EditFormModal = ({ handleClose }) => {
             </div>
 
             <div className="flex flex-col gap-2 mb-3">
-              {rows.length === 0 ? (
+              {itemToUpdate.varieties.length === 0 ? (
                 <p className="py-6 text-center text-[13px] text-gray-300">
                   No varieties added yet — click below to start
                 </p>
               ) : (
-                rows.map((row, i) => (
+                itemToUpdate.varieties.map((row, i) => (
                   <div
                     key={i}
                     className="grid items-center gap-2 px-3 py-2 border border-gray-200 bg-[#f9f9f9] rounded animate-slideIn"
@@ -192,9 +224,9 @@ const EditFormModal = ({ handleClose }) => {
 
                     <input
                       type="number"
-                      value={row.achievement_ha || ""}
+                      value={row.achievement || ""}
                       onChange={(e) =>
-                        updateRow(i, "achievement_ha", e.target.value)
+                        updateRow(i, "achievement", e.target.value)
                       }
                       placeholder="0.00"
                       className="w-full rounded border border-gray-200 bg-white px-2.5 py-1.5 text-[13px] text-gray-800 focus:border-blue-400 outline-none"
@@ -223,7 +255,7 @@ const EditFormModal = ({ handleClose }) => {
                 Total achievement
               </span>
               <span className={`text-[16px] font-semibold ${colors.text}`}>
-                {totalAchievement.toLocaleString()} ha
+                {itemToUpdate.totalAchivement} ha
               </span>
             </div>
 
