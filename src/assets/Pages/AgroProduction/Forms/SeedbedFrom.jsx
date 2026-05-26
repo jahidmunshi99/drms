@@ -1,18 +1,16 @@
 export default function SeedbedFrom({ item, onClose, handleEdit }) {
   if (!item) return null;
 
-  const total =
-    item?.varieties?.reduce(
-      (sum, v) => sum + (parseFloat(v.achievement) || 0),
-      0,
-    ) || 0;
+  const pct = item.varieties.map((item) => {
+    const percent = Math.floor((item.achievement / item.target) * 100);
+    return {
+      ...item,
+      percent,
+    };
+  });
 
-  const totalTarget =
-    item.varieties.reduce((sum, i) => sum + parseFloat(i.target), 0) || 0;
+  console.log(pct);
 
-  const pct = totalTarget ? Math.round((total / totalTarget) * 100) : 0;
-
-  console.log(totalTarget);
   const color =
     pct >= 100 ? "bg-emerald-600" : pct >= 60 ? "bg-amber-500" : "bg-red-500";
 
@@ -50,7 +48,7 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
               </p>
 
               <h3 className="mt-2 text-3xl font-bold text-blue-700">
-                {totalTarget}
+                {item.totalTarget}
               </h3>
 
               <p className="mt-1 text-sm text-blue-500">Hectare</p>
@@ -62,7 +60,7 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
               </p>
 
               <h3 className="mt-2 text-3xl font-bold text-emerald-700">
-                {total.toLocaleString()}
+                {item.totalAchivement}
               </h3>
 
               <p className="mt-1 text-sm text-emerald-500">Hectare</p>
@@ -73,7 +71,9 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                 Progress
               </p>
 
-              <h3 className="mt-2 text-3xl font-bold text-amber-700">{pct}%</h3>
+              <h3 className="mt-2 text-3xl font-bold text-amber-700">
+                {item.progress}%
+              </h3>
 
               <p className="mt-1 text-sm text-amber-500">Completion Rate</p>
             </div>
@@ -132,11 +132,9 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                 <tbody>
                   {item?.varieties?.length > 0 ? (
                     item.varieties.map((v, i) => {
-                      const share = item?.target
-                        ? Math.round(
-                            ((v?.achievement || 0) / item.target) * 100,
-                          )
-                        : 0;
+                      const percent = Math.floor(
+                        ((v?.achievement || 0) / (v?.target || 1)) * 100
+                      );
 
                       return (
                         <tr key={i} className="transition hover:bg-gray-50">
@@ -166,13 +164,13 @@ export default function SeedbedFrom({ item, onClose, handleEdit }) {
                                 <div
                                   className="h-full rounded-full bg-emerald-500"
                                   style={{
-                                    width: `${Math.min(pct, 100)}%`,
+                                    width: `${(percent, 100)}%`,
                                   }}
                                 />
                               </div>
 
                               <span className="min-w-[40px] text-sm font-medium text-gray-600">
-                                {pct}%
+                                {percent}%
                               </span>
                             </div>
                           </td>
