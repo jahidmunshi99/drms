@@ -16,13 +16,15 @@ const VARIETIES = [
 ];
 
 const EditFormModal = ({ handleClose, itemToUpdate }) => {
-  // const [varietys, setVarietys] = useState(itemToUpdate.varieties);
-  console.log(itemToUpdate);
-  //Add New Variety
-  const handleAddNew = () => {
-    setVarietys([...varietys, { name: "", achievement: "" }]);
+  const [varietys, setVarietys] = useState(itemToUpdate.varieties);
+
+  const handleRemove = (removeItem) => {
+    const updateVaritys = varietys.filter((item) => item !== removeItem);
+    setVarietys(updateVaritys);
+    console.log(removeItem);
   };
 
+  console.log(varietys);
   // Initial state with sample data
   const [rows, setRows] = useState([
     { name: "BARI Gom-25", achievement_ha: 640 },
@@ -250,17 +252,17 @@ const EditFormModal = ({ handleClose, itemToUpdate }) => {
                 ))
               )} */}
               {/* <VerityItem variety={varietys} /> */}
-              {itemToUpdate.varieties.length === 0 ? (
+              {varietys.length === 0 ? (
                 <p className="py-6 text-center text-[13px] text-gray-300">
                   No varieties added yet — click below to start
                 </p>
               ) : (
-                <TestVariety item={itemToUpdate} />
+                <TestVariety varietys={varietys} onRemove={handleRemove} />
               )}
             </div>
 
             <button
-              onClick={handleAddNew}
+              onClick={addRow}
               className="flex w-full items-center gap-1.5 rounded border border-dashed border-gray-200 px-3 py-2 text-[13px] text-gray-400 hover:border-blue-300 hover:text-blue-600 transition-all cursor-pointer"
             >
               + Add variety
