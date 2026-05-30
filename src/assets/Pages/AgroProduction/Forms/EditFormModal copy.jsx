@@ -36,7 +36,7 @@ const EditFormModal = ({ handleClose, itemToUpdate }) => {
   const totalAchievement = useMemo(() => {
     return rows.reduce(
       (sum, row) => sum + (parseFloat(row.achievement_ha) || 0),
-      0,
+      0
     );
   }, [rows]);
 

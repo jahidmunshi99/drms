@@ -16,11 +16,33 @@ const VARIETIES = [
 ];
 
 const EditFormModal = ({ handleClose, itemToUpdate }) => {
-  // const [varietys, setVarietys] = useState(itemToUpdate.varieties);
-  console.log(itemToUpdate);
+  const [varietys, setVarietys] = useState(itemToUpdate.varieties);
+  console.log("This is from Edit From Modal", varietys);
+  // console.log(itemToUpdate);
   //Add New Variety
   const handleAddNew = () => {
-    setVarietys([...varietys, { name: "", achievement: "" }]);
+    setVarietys([...varietys, { name: "", achievement: "", target: "" }]);
+  };
+
+  // Update Varitey
+  const handleUpdateVerity = (name, value) => {
+    const updateitem = varietys.map((item) => {
+      if (item.name === name) {
+        return {
+          ...item,
+          achievement: Number(value) || 0,
+        };
+      }
+      return item;
+    });
+    setVarietys(updateitem);
+  };
+
+  //Remove Verity From List
+  const handleRemove = (item) => {
+    const removeItem = varietys.filter((e) => e.name !== item.name);
+    setVarietys(removeItem);
+    console.log(item);
   };
 
   // Initial state with sample data
@@ -34,7 +56,7 @@ const EditFormModal = ({ handleClose, itemToUpdate }) => {
   const totalAchievement = useMemo(() => {
     return rows.reduce(
       (sum, row) => sum + (parseFloat(row.achievement_ha) || 0),
-      0,
+      0
     );
   }, [rows]);
 
@@ -250,12 +272,16 @@ const EditFormModal = ({ handleClose, itemToUpdate }) => {
                 ))
               )} */}
               {/* <VerityItem variety={varietys} /> */}
-              {itemToUpdate.varieties.length === 0 ? (
+              {varietys.length === 0 ? (
                 <p className="py-6 text-center text-[13px] text-gray-300">
                   No varieties added yet — click below to start
                 </p>
               ) : (
-                <TestVariety item={itemToUpdate} />
+                <TestVariety
+                  item={varietys}
+                  onRemove={handleRemove}
+                  onUpdate={handleUpdateVerity}
+                />
               )}
             </div>
 
