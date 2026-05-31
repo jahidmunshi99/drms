@@ -17,8 +17,7 @@ const VARIETIES = [
 
 const EditFormModal = ({ handleClose, itemToUpdate }) => {
   const [varietys, setVarietys] = useState(itemToUpdate.varieties);
-  console.log("This is from Edit From Modal", varietys);
-  // console.log(itemToUpdate);
+  console.log(itemToUpdate);
   //Add New Variety
   const handleAddNew = () => {
     setVarietys([...varietys, { name: "", achievement: "", target: "" }]);
@@ -56,7 +55,7 @@ const EditFormModal = ({ handleClose, itemToUpdate }) => {
   const totalAchievement = useMemo(() => {
     return rows.reduce(
       (sum, row) => sum + (parseFloat(row.achievement_ha) || 0),
-      0
+      0,
     );
   }, [rows]);
 

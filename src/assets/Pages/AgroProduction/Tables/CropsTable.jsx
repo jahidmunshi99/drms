@@ -1,12 +1,13 @@
 import { FaEye } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
+import { IoPrintOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 
-const CropsTable = ({ onCropInfo, data }) => {
-  const filterCrops = data.map((item) => {
+const CropsTable = ({ onCropInfo, sowingData }) => {
+  const filterCrops = sowingData.map((item) => {
     const totalAchivement = item?.varieties.reduce(
       (sum, verity) => sum + verity.achievement,
-      0 || 0
+      0 || 0,
     );
 
     const progress = Math.floor((totalAchivement / item.target) * 100);
@@ -24,7 +25,14 @@ const CropsTable = ({ onCropInfo, data }) => {
         <h2 className="text-base font-semibold text-gray-800">
           Crops Overview
         </h2>
-        <span className="text-sm text-gray-500">10 records</span>
+        <div className="flex items-center gap-2">
+          <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
+            Export CSV
+          </button>
+          <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
+            <IoPrintOutline className="text-xl" />
+          </button>
+        </div>
       </div>
       {/* <!-- Table --> */}
       <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">

@@ -165,7 +165,7 @@ const AgroProduction = () => {
       {show && (
         <SowingForm
           item={cropInfo}
-          onClose={() => setShow(false)}
+          onClose={() => setShow(!show)}
           handleEdit={handleEdit}
         />
       )}
@@ -181,7 +181,7 @@ const AgroProduction = () => {
       <FilterHeader filterInfo={filterInfo} />
 
       {/* ---------------New Overview Cards---------------------------------- */}
-      <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* <!-- Total Target --> */}
         <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-6 border border-gray-100">
           <p className="text-xs font-semibold tracking-wider text-gray-400 uppercase">
@@ -358,7 +358,7 @@ const AgroProduction = () => {
           {/* Table-1 Seedbed Overview */}
           <SeedbedTable onSeedbedInfo={onSeedBedInfo} bedData={seedBed} />
           {/* Table-2 Crops Overview */}
-          <CropsTable onCropInfo={onCropInfo} data={sowing} />
+          <CropsTable onCropInfo={onCropInfo} sowingData={sowing} />
           {/* Table-3 Harvest Overview */}
           <HarvestTable onCropInfo={onHarvestInfo} data={harvest} />
         </div>

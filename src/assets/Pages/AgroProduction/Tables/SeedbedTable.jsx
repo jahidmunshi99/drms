@@ -1,5 +1,6 @@
 import { FaEye } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
+import { IoPrintOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 
 const SeedbedTable = ({ onSeedbedInfo, bedData }) => {
@@ -32,7 +33,14 @@ const SeedbedTable = ({ onSeedbedInfo, bedData }) => {
         <h2 className="text-base font-semibold text-gray-800">
           Seedbed Overview
         </h2>
-        <span className="text-sm text-gray-500">10 records</span>
+        <div className="flex items-center gap-2">
+          <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
+            Export CSV
+          </button>
+          <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
+            <IoPrintOutline className="text-xl" />
+          </button>
+        </div>
       </div>
       {/* <!-- Table --> */}
       <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
