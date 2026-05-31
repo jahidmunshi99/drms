@@ -3,7 +3,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { IoPrintOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 
-const SeedbedTable = ({ onSeedbedInfo, bedData }) => {
+const SeedbedTable = ({ onSeedbedInfo, bedData, onDownload }) => {
   const filterCrop = bedData.map((item) => {
     const totals = item.varieties.reduce(
       (sum, varity) => {
@@ -37,7 +37,12 @@ const SeedbedTable = ({ onSeedbedInfo, bedData }) => {
           <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
             Export CSV
           </button>
-          <button className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer">
+          <button
+            className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-slate-200 cursor-pointer"
+            onClick={() => {
+              onDownload(bedData);
+            }}
+          >
             <IoPrintOutline className="text-xl" />
           </button>
         </div>

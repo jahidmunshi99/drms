@@ -1,5 +1,7 @@
+import { pdf } from "@react-pdf/renderer";
 import { useMemo, useState } from "react";
 import { cultivationData, sessionInfo, yearsInfo } from "../../data/data.js";
+import { CreatePDF } from "../../utils/createPDF_utlis.jsx";
 import FilterHeader from "./FilterHeader.jsx";
 import EditFormModal from "./Forms/EditFormModal.jsx";
 import HarvestForm from "./Forms/HarvestForm";
@@ -27,6 +29,24 @@ const AgroProduction = () => {
   const [selectedUpazila, setSelectedUpazila] = useState("");
   const [selectedSession, setSelectedSession] = useState("");
   const [selectedFYear, setSelectedFYear] = useState("");
+
+  /* -------------------------------------------------------------------------- */
+  /*                               PDF Creation Handler                               */
+  /* -------------------------------------------------------------------------- */
+
+  const onDownload = async (bedData) => {
+    console.log(bedData);
+    const blob = await pdf(<CreatePDF data={bedData} />).toBlob();
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${bedData[0].category}.pdf`;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                               FILTER OPTIONS                               */
@@ -198,6 +218,22 @@ const AgroProduction = () => {
               <span>১২৮০ হেক্টর</span>
             </div>
           </div>
+          <div>
+            <div className="grid gap-2 grid-cols-2 mt-4">
+              <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-cyan-600">
+                <span>হাইব্রিড</span>
+                <span>১২৮০ হে.</span>
+              </div>
+              <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px]  text-cyan-600">
+                <span>উফশী</span>
+                <span>১২৮০ হে.</span>
+              </div>
+              <div className="flex justify-between gap-2 bg-gray-100 rounded-full px-3 py-1 font-medium text-[11px] text-cyan-600">
+                <span>স্থানীয়</span>
+                <span>১২৮০ হে.</span>
+              </div>
+            </div>
+          </div>
           {/* <h2 className="text-3xl font-bold text-cyan-500 mt-2">
             1,230 <span className="text-lg font-medium">ha</span>
           </h2>
@@ -356,7 +392,11 @@ const AgroProduction = () => {
         {/* <!-- Left Large Card --> */}
         <div className="lg:col-span-3">
           {/* Table-1 Seedbed Overview */}
-          <SeedbedTable onSeedbedInfo={onSeedBedInfo} bedData={seedBed} />
+          <SeedbedTable
+            onSeedbedInfo={onSeedBedInfo}
+            bedData={seedBed}
+            onDownload={onDownload}
+          />
           {/* Table-2 Crops Overview */}
           <CropsTable onCropInfo={onCropInfo} sowingData={sowing} />
           {/* Table-3 Harvest Overview */}
