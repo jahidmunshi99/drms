@@ -37,14 +37,11 @@ const AgroProduction = () => {
   const onDownload = async (bedData) => {
     console.log(bedData);
     const blob = await pdf(<CreatePDF data={bedData} />).toBlob();
-
     const url = URL.createObjectURL(blob);
-
     const link = document.createElement("a");
     link.href = url;
     link.download = `${bedData[0].category}.pdf`;
     link.click();
-
     URL.revokeObjectURL(url);
   };
 
